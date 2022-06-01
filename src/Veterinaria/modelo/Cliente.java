@@ -8,7 +8,7 @@ public class Cliente {
     private String apellido;
     private String direccion;
     private long telefono;
-    private String alternativa;
+    private String contactoAlternativo;
 
     public Cliente() {
     }
@@ -19,7 +19,7 @@ public class Cliente {
         this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.alternativa = alternativa;
+        contactoAlternativo = alternativa;
     }
 
     public Cliente(int idCliente, long dni, String nombre, String apellido, String direccion, long telefono, String alternativa) {
@@ -29,7 +29,7 @@ public class Cliente {
         this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.alternativa = alternativa;
+        contactoAlternativo = alternativa;
     }
 
     public int getIdCliente() {
@@ -81,16 +81,16 @@ public class Cliente {
     }
 
     public String getAlternativa() {
-        return alternativa;
+        return contactoAlternativo;
     }
 
     public void setAlternativa(String alternativa) {
-        this.alternativa = alternativa;
+        this.contactoAlternativo = alternativa;
     }
 
     @Override
     public String toString() {
-        return idCliente + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", alternativa=" + alternativa ;
+        return idCliente + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", alternativa=" + contactoAlternativo;
     }
     
     

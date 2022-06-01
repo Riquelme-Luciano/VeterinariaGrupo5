@@ -5,9 +5,10 @@ import java.time.LocalDate;
 
 public class Consulta {
     private int idConsulta;
-    private Tratamiento tratamiento; //precio y idTratamiento
+    private Tratamiento tratamiento; //importe y idTratamiento
     private LocalDate fecha;
-    private Mascota mascota; //pesoActual y pesoPromedio
+    private double pesoMedido;
+    private Mascota mascota; //idMascota
 
     public Consulta() {
     }

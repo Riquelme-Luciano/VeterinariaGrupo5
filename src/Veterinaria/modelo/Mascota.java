@@ -11,8 +11,6 @@ public class Mascota {
     private String raza;
     private String colorPelaje;
     private LocalDate fechaNac;
-    private double pesoActual;
-    private double pesoPromedio;
     private boolean  activo;
     private Cliente cliente; //idCliente database
 
@@ -26,8 +24,6 @@ public class Mascota {
         this.raza = raza;
         this.colorPelaje = colorPelaje;
         this.fechaNac = fechaNac;
-        this.pesoActual = pesoActual;
-        this.pesoPromedio = pesoPromedio;
         this.activo = activo;
         this.cliente = cliente;
     }
@@ -40,8 +36,6 @@ public class Mascota {
         this.raza = raza;
         this.colorPelaje = colorPelaje;
         this.fechaNac = fechaNac;
-        this.pesoActual = pesoActual;
-        this.pesoPromedio = pesoPromedio;
         this.activo = activo;
         this.cliente = cliente;
     }
@@ -101,23 +95,7 @@ public class Mascota {
     public void setFechaNac(LocalDate fechaNac) {
         this.fechaNac = fechaNac;
     }
-
-    public double getPesoActual() {
-        return pesoActual;
-    }
-
-    public void setPesoActual(double pesoActual) {
-        this.pesoActual = pesoActual;
-    }
-
-    public double getPesoPromedio() {
-        return pesoPromedio;
-    }
-
-    public void setPesoPromedio(double pesoPromedio) {
-        this.pesoPromedio = pesoPromedio;
-    }
-
+    
     public boolean isActivo() {
         return activo;
     }
@@ -136,7 +114,7 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return "idMascota=" + idMascota + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + ", raza=" + raza + ", colorPelaje=" + colorPelaje + ", fechaNac=" + fechaNac + ", pesoActual=" + pesoActual + ", pesoPromedio=" + pesoPromedio + ", activo=" + activo + " dueño: " + cliente;
+        return idMascota + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + ", raza=" + raza + ", colorPelaje=" + colorPelaje + ", fechaNac=" + fechaNac +", activo=" + activo + " dueño: " + cliente;
     }
     
     
