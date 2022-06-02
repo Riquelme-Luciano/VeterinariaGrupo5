@@ -60,7 +60,7 @@ public class Consulta {
 
     @Override
     public String toString() {
-        return idConsulta + ", tratamiento=" + tratamiento + ", fecha=" + fecha + ", mascota=" + mascota;
+        return idConsulta + " " + fecha +" "+ tratamiento.getImporte() + " " + fecha + " " + mascota.getIdMascota()+ tratamiento.getIdTratamiento();
     }
     
     

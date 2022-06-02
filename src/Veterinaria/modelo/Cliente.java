@@ -87,17 +87,17 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getAlternativa() {
+    public String getContactoAlternativo() {
         return contactoAlternativo;
     }
 
-    public void setAlternativa(String alternativa) {
+    public void setContactoAlternativo(String alternativa) {
         this.contactoAlternativo = alternativa;
     }
 
     @Override
     public String toString() {
-        return idCliente + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", alternativa=" + contactoAlternativo;
+        return nombre + " " + apellido + " "+ dni + " " + direccion + " " + telefono + " " + contactoAlternativo;
     }
     
     

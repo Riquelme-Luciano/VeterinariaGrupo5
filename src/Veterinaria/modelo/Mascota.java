@@ -10,6 +10,7 @@ public class Mascota {
     private String especie;
     private String raza;
     private String colorPelaje;
+    private LocalDate fechaNac;
     private boolean  activo;
     private Cliente cliente; //idCliente database
 
@@ -24,23 +25,25 @@ public class Mascota {
         this.cliente = cliente;
     }
     
-    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, double pesoPromedio, boolean activo, Cliente cliente) {
+    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, boolean activo, Cliente cliente) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.colorPelaje = colorPelaje;       
+        this.colorPelaje = colorPelaje;
+        this.fechaNac=fechaNac;
         this.activo = activo;
         this.cliente = cliente;
     }
     
-    public Mascota(int idMascota, String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, double pesoPromedio, boolean activo, Cliente cliente) {
+    public Mascota(int idMascota, String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac,boolean activo, Cliente cliente) {
         this.idMascota = idMascota;
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.colorPelaje = colorPelaje;    
+        this.colorPelaje = colorPelaje;  
+        this.fechaNac=fechaNac;
         this.activo = activo;
         this.cliente = cliente;
     }
@@ -92,6 +95,14 @@ public class Mascota {
     public void setColorPelaje(String colorPelaje) {
         this.colorPelaje = colorPelaje;
     }
+
+    public LocalDate getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(LocalDate fechaNac) {
+        this.fechaNac = fechaNac;
+    }
     
     public boolean isActivo() {
         return activo;
@@ -101,17 +112,17 @@ public class Mascota {
         this.activo = activo;
     }
 
-    public Cliente getDueño() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setDueño(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+    
     @Override
     public String toString() {
-        return idMascota + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + ", raza=" + raza + ", colorPelaje=" + colorPelaje +", activo=" + activo + " dueño: " + cliente;
+        return idMascota + " " + alias + " " + sexo + " " + especie + " " + raza + " " + colorPelaje +" " + activo + " " + cliente.getIdCliente();
     }
     
     
