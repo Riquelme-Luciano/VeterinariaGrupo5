@@ -5,17 +5,134 @@
  */
 package view;
 
+import controller.ClienteData;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.Cliente;
+import model.Conexion;
+
 /**
  *
  * @author danib
  */
 public class ClientesView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ClientesView
-     */
+    Conexion con = new Conexion();
+    ClienteData data = new ClienteData(con);
+    Cliente c = new Cliente();
+
+    DefaultTableModel modelo = new DefaultTableModel();
+    ArrayList<Cliente> lista = new ArrayList();
+
     public ClientesView() {
         initComponents();
+        listar(tablaClientes);
+    }
+
+    public void insertar() {
+        long documento = Long.parseLong(txtDocumento.getText());
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String direccion = txtDireccion.getText();
+        long telefono = Long.parseLong(txtTelefono.getText());
+        String alternativo = txtAlternativo.getText();
+
+        c.setDni(documento);
+        c.setNombre(nombre);
+        c.setApellido(apellido);
+        c.setDireccion(direccion);
+        c.setTelefono(telefono);
+        c.setAlternativa(alternativo);
+
+        int r = data.insertarCliente(c);
+
+        if (r == 1) {
+            JOptionPane.showMessageDialog(this, "Cliente agregado");
+            limpiarContenido();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error");
+        }
+
+    }
+
+    public void actualizar() {
+        limpiarContenido();
+        Long documento = Long.parseLong(txtDocumento.getText());
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        Long telefono = Long.parseLong(txtTelefono.getText());
+        String direccion = txtDireccion.getText();
+        String alternativo = txtAlternativo.getText();
+
+        c.setDni(documento);
+        c.setNombre(nombre);
+        c.setApellido(apellido);
+        c.setDireccion(direccion);
+        c.setTelefono(telefono);
+        c.setAlternativa(alternativo);
+
+        int r = data.actualizarCliente(c);
+
+        if (r == 1) {
+            JOptionPane.showMessageDialog(this, "Cliente actualizado");
+            listar(tablaClientes);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al actualizar");
+        }
+    }
+
+    public void limpiarContenido() {
+        txtDocumento.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtAlternativo.setText("");
+    }
+
+    public void listar(JTable tabla) {
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) tabla.getModel();
+        lista = (ArrayList<Cliente>) data.listar();
+        Object[] object = new Object[6];
+
+        for (int i = 0; i < lista.size(); i++) {
+            object[0] = lista.get(i).getDni();
+            object[1] = lista.get(i).getNombre();
+            object[2] = lista.get(i).getApellido();
+            object[3] = lista.get(i).getTelefono();
+            object[4] = lista.get(i).getDireccion();
+            object[5] = lista.get(i).getAlternativa();
+            modelo.addRow(object);
+        }
+        tablaClientes.setModel(modelo);
+    }
+
+    public void seleccionar() {
+        limpiarContenido();
+        int fila = this.tablaClientes.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
+        } else {
+            long documento = Long.parseLong(tablaClientes.getValueAt(fila, 0).toString());
+            String nombre = (String) tablaClientes.getValueAt(fila, 1);
+            String apellido = (String) tablaClientes.getValueAt(fila, 2);
+            long telefono = Long.parseLong(tablaClientes.getValueAt(fila, 3).toString());
+            String direccion = tablaClientes.getValueAt(fila, 4).toString();
+            String alternativo = tablaClientes.getValueAt(fila, 5).toString();
+
+            txtDocumento.setText("" + documento);
+            txtNombre.setText(nombre);
+            txtApellido.setText(apellido);
+            txtDireccion.setText("" + telefono);
+            txtTelefono.setText(direccion);
+            txtAlternativo.setText(alternativo);
+        }
     }
 
     /**
@@ -28,39 +145,147 @@ public class ClientesView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtDireccion = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         lblDoc = new javax.swing.JLabel();
+        lblDoc1 = new javax.swing.JLabel();
+        lblDoc2 = new javax.swing.JLabel();
+        lblDoc3 = new javax.swing.JLabel();
+        lblDoc4 = new javax.swing.JLabel();
+        txtAlternativo = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtDocumento = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        lblDoc5 = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JButton();
+        btnGuardar3 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtDireccion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtApellido.setBackground(new java.awt.Color(255, 255, 255));
+        txtApellido.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtApellido.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellido.setBorder(null);
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 283, -1));
 
         lblDoc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDoc.setForeground(new java.awt.Color(0, 0, 0));
         lblDoc.setText("Documento:");
+        jPanel1.add(lblDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDoc))
-                .addContainerGap(593, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lblDoc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(393, Short.MAX_VALUE))
-        );
+        lblDoc1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDoc1.setForeground(new java.awt.Color(0, 0, 0));
+        lblDoc1.setText("Nombre:");
+        jPanel1.add(lblDoc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+
+        lblDoc2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDoc2.setForeground(new java.awt.Color(0, 0, 0));
+        lblDoc2.setText("Apellido:");
+        jPanel1.add(lblDoc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
+
+        lblDoc3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDoc3.setForeground(new java.awt.Color(0, 0, 0));
+        lblDoc3.setText("Direccion:");
+        jPanel1.add(lblDoc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
+
+        lblDoc4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDoc4.setForeground(new java.awt.Color(0, 0, 0));
+        lblDoc4.setText("Persona alternativa:");
+        jPanel1.add(lblDoc4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, -1, -1));
+
+        txtAlternativo.setBackground(new java.awt.Color(255, 255, 255));
+        txtAlternativo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtAlternativo.setForeground(new java.awt.Color(0, 0, 0));
+        txtAlternativo.setBorder(null);
+        jPanel1.add(txtAlternativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 283, -1));
+
+        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombre.setBorder(null);
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 283, -1));
+
+        txtDocumento.setBackground(new java.awt.Color(255, 255, 255));
+        txtDocumento.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtDocumento.setForeground(new java.awt.Color(0, 0, 0));
+        txtDocumento.setBorder(null);
+        jPanel1.add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 283, -1));
+
+        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
+        txtDireccion.setBorder(null);
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 283, -1));
+
+        lblDoc5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDoc5.setForeground(new java.awt.Color(0, 0, 0));
+        lblDoc5.setText("Telefono:");
+        jPanel1.add(lblDoc5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
+
+        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefono.setBorder(null);
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 283, -1));
+
+        btnEliminar.setBackground(new java.awt.Color(0, 153, 51));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(null);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 120, 40));
+
+        btnGuardar3.setBackground(new java.awt.Color(0, 153, 51));
+        btnGuardar3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnGuardar3.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar3.setText("Guardar");
+        btnGuardar3.setBorder(null);
+        btnGuardar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardar3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGuardar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 120, 40));
+
+        btnActualizar.setBackground(new java.awt.Color(0, 153, 51));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setBorder(null);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 120, 40));
+
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "DNI", "Nombre", "Apellido", "Telefono", "Direccion", "Alternativo"
+            }
+        ));
+        tablaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaClientesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaClientes);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 800, 200));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,44 +301,67 @@ public class ClientesView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGuardar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar3ActionPerformed
+        insertar();
+        listar(tablaClientes);
+    }//GEN-LAST:event_btnGuardar3ActionPerformed
+
+    private void tablaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaClientesMouseClicked
+        int fila = tablaClientes.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un Cliente");
+        } else {
+            int documento = Integer.parseInt(tablaClientes.getValueAt(fila, 0).toString());
+            System.out.println(documento);
+            seleccionar();
+//            dao.eliminarAlumno(id);
+//            JOptionPane.showMessageDialog(vista, "Usuario eliminado");
+        }
+    }//GEN-LAST:event_tablaClientesMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = tablaClientes.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un Cliente");
+        } else {
+            int doc = Integer.parseInt(tablaClientes.getValueAt(fila, 0).toString());
+            data.eliminarCliente(doc);
+            JOptionPane.showMessageDialog(this, "Cliente eliminado");
+            listar(tablaClientes);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+       actualizar();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ClientesView().setVisible(true);
-            }
-        });
+        ClientesView v = new ClientesView();
+        v.setVisible(true);
+        v.setLocationRelativeTo(v);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDoc;
+    private javax.swing.JLabel lblDoc1;
+    private javax.swing.JLabel lblDoc2;
+    private javax.swing.JLabel lblDoc3;
+    private javax.swing.JLabel lblDoc4;
+    private javax.swing.JLabel lblDoc5;
+    private javax.swing.JTable tablaClientes;
+    private javax.swing.JTextField txtAlternativo;
+    private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtDocumento;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,8 @@
 package controller;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import model.Cliente;
 import model.Conexion;
 
@@ -68,5 +70,31 @@ public class ClienteData {
         } catch (Exception e) {
             System.out.println("Error al querer eliminar cliente en data" + e);
         }
+    }
+    
+       public List listar() {
+        this.con = conexion.getConexion();
+        List<Cliente> datos = new ArrayList<>();
+        String instruccion = "SELECT * FROM cliente";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Cliente c = new Cliente();
+                c.setDni(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setApellido(rs.getString(3));
+                c.setTelefono(rs.getLong(4));//convertir de date a LocalDate
+                c.setDireccion(rs.getString(5));
+                c.setAlternativa(rs.getString(6));
+                datos.add(c);
+            }
+            this.con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al listar clientes " + e);
+        }
+
+        return datos;
     }
 }
