@@ -10,20 +10,26 @@ public class Mascota {
     private String especie;
     private String raza;
     private String colorPelaje;
-    private LocalDate fechaNac;
     private boolean  activo;
     private Cliente cliente; //idCliente database
 
     public Mascota() {
     }
 
+    public Mascota(String alias,String sexo, String especie, boolean activo, Cliente cliente) {
+        this.alias=alias;
+        this.sexo = sexo;
+        this.especie = especie;
+        this.activo = activo;
+        this.cliente = cliente;
+    }
+    
     public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, double pesoPromedio, boolean activo, Cliente cliente) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.colorPelaje = colorPelaje;
-        this.fechaNac = fechaNac;
+        this.colorPelaje = colorPelaje;       
         this.activo = activo;
         this.cliente = cliente;
     }
@@ -34,8 +40,7 @@ public class Mascota {
         this.sexo = sexo;
         this.especie = especie;
         this.raza = raza;
-        this.colorPelaje = colorPelaje;
-        this.fechaNac = fechaNac;
+        this.colorPelaje = colorPelaje;    
         this.activo = activo;
         this.cliente = cliente;
     }
@@ -87,14 +92,6 @@ public class Mascota {
     public void setColorPelaje(String colorPelaje) {
         this.colorPelaje = colorPelaje;
     }
-
-    public LocalDate getFechaNac() {
-        return fechaNac;
-    }
-
-    public void setFechaNac(LocalDate fechaNac) {
-        this.fechaNac = fechaNac;
-    }
     
     public boolean isActivo() {
         return activo;
@@ -114,7 +111,7 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return idMascota + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + ", raza=" + raza + ", colorPelaje=" + colorPelaje + ", fechaNac=" + fechaNac +", activo=" + activo + " dueño: " + cliente;
+        return idMascota + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + ", raza=" + raza + ", colorPelaje=" + colorPelaje +", activo=" + activo + " dueño: " + cliente;
     }
     
     

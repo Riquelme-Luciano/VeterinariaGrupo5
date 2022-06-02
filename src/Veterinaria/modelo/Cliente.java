@@ -13,6 +13,13 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(long dni, String nombre, String apellido, long telefono) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono= telefono;
+    }
+    
     public Cliente(long dni, String nombre, String apellido, String direccion, long telefono, String alternativa) {
         this.dni = dni;
         this.nombre = nombre;

@@ -12,6 +12,12 @@ public class Tratamiento {
     public Tratamiento() {
     }
 
+    public Tratamiento(String tipo, double importe, boolean activo) {
+        this.tipo = tipo;
+        this.importe = importe;
+        this.activo = activo;
+    }
+    
     public Tratamiento(String tipo, String descripcion, String medicamento, double importe, boolean activo) {
         this.tipo = tipo;
         this.descripcion = descripcion;
@@ -28,7 +34,8 @@ public class Tratamiento {
         this.importe = importe;
         this.activo = activo;
     }
-
+    
+    
     public int getIdTratamiento() {
         return idTratamiento;
     }
