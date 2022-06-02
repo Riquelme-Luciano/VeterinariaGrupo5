@@ -9,12 +9,7 @@ public class MascotaData {
      private Connection con=null;
 
     public MascotaData(Conexion conexion) {
-        try {
-            this.con = conexion.getConexion();
-            
-        } catch (SQLException e) {
-            System.out.println("Error de conexion en MascotaData");
-        }
+        this.con = conexion.getConexion();
     }
     
     

@@ -9,12 +9,7 @@ public class TratamientoData {
      private Connection con=null;
     
     public TratamientoData(Conexion conexion) {
-        try {
-            this.con = conexion.getConexion();
-            
-        } catch (SQLException e) {
-            System.out.println("Error de conexion en TratamientoData");
-        }
+        this.con = conexion.getConexion();
     }
     
     
