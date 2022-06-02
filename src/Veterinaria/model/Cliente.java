@@ -1,5 +1,5 @@
 
-package Veterinaria.modelo;
+package Veterinaria.model;
 
 public class Cliente {
     private int idCliente;
@@ -87,11 +87,11 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getContactoAlternativo() {
+    public String getAlternativa() {
         return contactoAlternativo;
     }
 
-    public void setContactoAlternativo(String alternativa) {
+    public void setAlternativa(String alternativa) {
         this.contactoAlternativo = alternativa;
     }
 

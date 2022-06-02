@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2022 a las 05:24:23
+-- Tiempo de generación: 02-06-2022 a las 22:18:01
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -34,62 +34,26 @@ CREATE TABLE `cliente` (
   `apellido` varchar(50) NOT NULL,
   `direccion` varchar(50) DEFAULT NULL,
   `telefono` int(11) NOT NULL,
-  `contactoAlternativo` varchar(50) DEFAULT NULL
+  `contactoAlternativo` varchar(50) DEFAULT NULL,
+  `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`idCliente`, `dni`, `nombre`, `apellido`, `direccion`, `telefono`, `contactoAlternativo`) VALUES
-(1, 37505013, 'Jose', 'Armando', 'Montes 123', 123465, 'Josefa'),
-(2, 34956878, 'Melinda', 'Cotia', 'Colon 21', 789465, 'Monica'),
-(3, 12345678, 'Jorge', 'De La Selva', 'Amazonas 456', 12345, 'Tarzan'),
-(4, 74561559, 'Daniel', 'Barros', 'Torre Alfa 163', 12345, 'Alfonsina'),
-(5, 15926378, 'Maximiliano', 'Ardilla', 'San Luis 789', 12345, 'La señora ardilla'),
-(6, 123, 'Nicolas', 'Requelme', 'Peron 23', 789, 'Micaela'),
-(7, 563, 'Micaela', 'Viu', 'calle 7', 123, 'Nicolas'),
-(8, 512, 'Juan', 'Lopez', 'Suipacha 12', 123, 'Antonia'),
-(9, 982, 'Luciano', 'Riquelme', 'Brasil 130', 123, 'Marita'),
-(10, 124, 'Pablo', 'Funes', 'Sucre 901', 5687, 'Carolina'),
-(12, 12389, 'Juan', 'Perez', 'Call100', 0, '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `consulta`
---
-
-CREATE TABLE `consulta` (
-  `idConsulta` int(11) NOT NULL,
-  `precio` double NOT NULL,
-  `fecha` date NOT NULL,
-  `pesoMedido` double NOT NULL,
-  `idMascota` int(11) NOT NULL,
-  `idTratamiento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `consulta`
---
-
-INSERT INTO `consulta` (`idConsulta`, `precio`, `fecha`, `pesoMedido`, `idMascota`, `idTratamiento`) VALUES
-(1, 2000, '2022-05-15', 10, 1, 1),
-(2, 2000, '2022-05-15', 0, 8, 1),
-(3, 2500, '2022-05-30', 0, 6, 2),
-(4, 2500, '2022-03-01', 0, 2, 3),
-(5, 1800, '2022-10-02', 13, 1, 4),
-(6, 3000, '2022-08-03', 15, 1, 5),
-(7, 5000, '2022-04-08', 0, 4, 6),
-(8, 2000, '1990-09-02', 0, 5, 3),
-(9, 1800, '2022-06-01', 55.2, 3, 4),
-(10, 2000, '2022-06-10', 56.48, 7, 4),
-(11, 2000, '2022-06-20', 58.54, 10, 4),
-(12, 2000, '2022-06-30', 48, 3, 4),
-(13, 1800, '2022-06-01', 55.2, 3, 3),
-(14, 2000, '2022-06-10', 56.48, 3, 3),
-(15, 2000, '2022-06-20', 58.54, 3, 3),
-(16, 2000, '2022-06-30', 57.15, 3, 3);
+INSERT INTO `cliente` (`idCliente`, `dni`, `nombre`, `apellido`, `direccion`, `telefono`, `contactoAlternativo`, `activo`) VALUES
+(1, 37505013, 'Jose', 'Armando', 'Montes 123', 123465, 'Josefa', 0),
+(2, 34956878, 'Melinda', 'Cotia', 'Colon 21', 789465, 'Monica', 0),
+(3, 12345678, 'Jorge', 'De La Selva', 'Amazonas 456', 12345, 'Tarzan', 0),
+(4, 74561559, 'Daniel', 'Barros', 'Torre Alfa 163', 12345, 'Alfonsina', 0),
+(5, 15926378, 'Maximiliano', 'Ardilla', 'San Luis 789', 12345, 'La señora ardilla', 0),
+(6, 123, 'Nicolas', 'Requelme', 'Peron 23', 789, 'Micaela', 0),
+(7, 563, 'Micaela', 'Viu', 'calle 7', 123, 'Nicolas', 0),
+(8, 512, 'Juan', 'Lopez', 'Suipacha 12', 123, 'Antonia', 0),
+(9, 982, 'Luciano', 'Riquelme', 'Brasil 130', 123, 'Marita', 0),
+(10, 124, 'Pablo', 'Funes', 'Sucre 901', 5687, 'Carolina', 0),
+(12, 12389, 'Juan', 'Perez', 'Call100', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -121,8 +85,8 @@ INSERT INTO `mascota` (`idMascota`, `alias`, `sexo`, `especie`, `raza`, `colorPe
 (5, 'Mico', 'macho', 'pajaro', 'loro', 'verdoso', '2008-02-23', 0, 6),
 (6, 'Mini', 'hembra', 'gato', '', '', '1968-07-01', 1, 5),
 (7, 'Flopi', 'hembra', 'rata', 'hamster', 'blanquecino', '1993-05-29', 1, 3),
-(8, 'Gori', 'macho', 'tortuga', 'pequeña', 'verdoso', '1993-05-29', 1, 3),
-(9, 'Monki', 'macho', 'mono', 'salvaje', 'negro', '1993-05-29', 1, 3),
+(8, 'Gori', 'macho', 'hamster', 'pequeña', 'marron y blanco', '1993-05-29', 1, 3),
+(9, 'Monki', 'macho', 'hamster', 'mediana', 'cafe claro', '1993-05-29', 1, 3),
 (10, 'Gallo', 'macho', 'pajaro', 'gallina', 'blanquecino', '1993-05-29', 1, 3);
 
 -- --------------------------------------------------------
@@ -152,6 +116,44 @@ INSERT INTO `tratamiento` (`idTratamiento`, `tipo`, `descripcion`, `medicamento`
 (5, 'castracion', ' ', '', 3000, 1),
 (6, 'cirugia ', ' ', ' ', 5000, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `visita`
+--
+
+CREATE TABLE `visita` (
+  `idVisita` int(11) NOT NULL,
+  `precio` double NOT NULL,
+  `fecha` date NOT NULL,
+  `pesoMedido` double NOT NULL,
+  `activo` tinyint(1) NOT NULL,
+  `idMascota` int(11) NOT NULL,
+  `idTratamiento` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `visita`
+--
+
+INSERT INTO `visita` (`idVisita`, `precio`, `fecha`, `pesoMedido`, `activo`, `idMascota`, `idTratamiento`) VALUES
+(1, 2000, '2022-05-15', 10, 0, 1, 1),
+(2, 2000, '2022-05-15', 0, 0, 8, 1),
+(3, 2500, '2022-05-30', 0, 0, 6, 2),
+(4, 2500, '2022-03-01', 0, 0, 2, 3),
+(5, 1800, '2022-10-02', 13, 0, 1, 4),
+(6, 3000, '2022-08-03', 15, 0, 1, 5),
+(7, 5000, '2022-04-08', 0, 0, 4, 6),
+(8, 2000, '1990-09-02', 0, 0, 5, 3),
+(9, 1800, '2022-06-01', 55.2, 0, 3, 4),
+(10, 2000, '2022-06-10', 56.48, 0, 7, 4),
+(11, 2000, '2022-06-20', 58.54, 0, 10, 4),
+(12, 2000, '2022-06-30', 48, 0, 3, 4),
+(13, 1800, '2022-06-01', 55.2, 0, 3, 3),
+(14, 2000, '2022-06-10', 56.48, 0, 3, 3),
+(15, 2000, '2022-06-20', 58.54, 0, 3, 3),
+(16, 2000, '2022-06-30', 57.15, 0, 3, 3);
+
 --
 -- Índices para tablas volcadas
 --
@@ -162,14 +164,6 @@ INSERT INTO `tratamiento` (`idTratamiento`, `tipo`, `descripcion`, `medicamento`
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`idCliente`),
   ADD UNIQUE KEY `dni` (`dni`);
-
---
--- Indices de la tabla `consulta`
---
-ALTER TABLE `consulta`
-  ADD PRIMARY KEY (`idConsulta`),
-  ADD KEY `idMascota` (`idMascota`,`idTratamiento`),
-  ADD KEY `fk_consulta_tratamiento_idTratamiento` (`idTratamiento`);
 
 --
 -- Indices de la tabla `mascota`
@@ -185,6 +179,14 @@ ALTER TABLE `tratamiento`
   ADD PRIMARY KEY (`idTratamiento`);
 
 --
+-- Indices de la tabla `visita`
+--
+ALTER TABLE `visita`
+  ADD PRIMARY KEY (`idVisita`),
+  ADD KEY `idMascota` (`idMascota`,`idTratamiento`),
+  ADD KEY `fk_consulta_tratamiento_idTratamiento` (`idTratamiento`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -193,12 +195,6 @@ ALTER TABLE `tratamiento`
 --
 ALTER TABLE `cliente`
   MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT de la tabla `consulta`
---
-ALTER TABLE `consulta`
-  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `mascota`
@@ -213,15 +209,14 @@ ALTER TABLE `tratamiento`
   MODIFY `idTratamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Restricciones para tablas volcadas
+-- AUTO_INCREMENT de la tabla `visita`
 --
+ALTER TABLE `visita`
+  MODIFY `idVisita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Filtros para la tabla `consulta`
+-- Restricciones para tablas volcadas
 --
-ALTER TABLE `consulta`
-  ADD CONSTRAINT `fk_consulta_mascota_idMascota` FOREIGN KEY (`idMascota`) REFERENCES `mascota` (`idMascota`),
-  ADD CONSTRAINT `fk_consulta_tratamiento_idTratamiento` FOREIGN KEY (`idTratamiento`) REFERENCES `tratamiento` (`idTratamiento`);
 
 --
 -- Filtros para la tabla `mascota`
@@ -233,7 +228,14 @@ ALTER TABLE `mascota`
 -- Filtros para la tabla `tratamiento`
 --
 ALTER TABLE `tratamiento`
-  ADD CONSTRAINT `fk_tratamiento_consulta_idTratamiento` FOREIGN KEY (`idTratamiento`) REFERENCES `consulta` (`idTratamiento`);
+  ADD CONSTRAINT `fk_tratamiento_consulta_idTratamiento` FOREIGN KEY (`idTratamiento`) REFERENCES `visita` (`idTratamiento`);
+
+--
+-- Filtros para la tabla `visita`
+--
+ALTER TABLE `visita`
+  ADD CONSTRAINT `fk_consulta_mascota_idMascota` FOREIGN KEY (`idMascota`) REFERENCES `mascota` (`idMascota`),
+  ADD CONSTRAINT `fk_consulta_tratamiento_idTratamiento` FOREIGN KEY (`idTratamiento`) REFERENCES `tratamiento` (`idTratamiento`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

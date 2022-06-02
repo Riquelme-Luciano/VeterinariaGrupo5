@@ -1,5 +1,5 @@
 
-package Veterinaria.modelo;
+package Veterinaria.model;
 
 public class Tratamiento {
     private int idTratamiento;
