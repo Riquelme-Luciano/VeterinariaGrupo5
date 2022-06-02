@@ -5,14 +5,14 @@ import java.time.LocalDate;
 
 public class Consulta {
     private int idConsulta;
-    private Tratamiento tratamiento; //importe y idTratamiento
     private LocalDate fecha;
     private double pesoMedido;
+    private Tratamiento tratamiento; //importe y idTratamiento
     private Mascota mascota; //idMascota
 
     public Consulta() {
     }
-
+    
     public Consulta(Tratamiento tratamiento, LocalDate fecha, Mascota mascota) {
         this.tratamiento = tratamiento;
         this.fecha = fecha;
@@ -60,7 +60,7 @@ public class Consulta {
 
     @Override
     public String toString() {
-        return "idConsulta=" + idConsulta + ", tratamiento=" + tratamiento + ", fecha=" + fecha + ", mascota=" + mascota;
+        return idConsulta + ", tratamiento=" + tratamiento + ", fecha=" + fecha + ", mascota=" + mascota;
     }
     
     
