@@ -1,41 +1,34 @@
+package model;
 
-package Veterinaria.modelo;
-
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Mascota {
-    private int idMascota;
+    private int codigo;
     private String alias;
     private String sexo;
-    private String especie;
+    private TipoMascota especie;
     private String raza;
     private String colorPelaje;
+    private Date nacimiento;
     private boolean  activo;
-    private Cliente cliente; //idCliente database
+    private double pesoActual;
+    private Cliente cliente; 
 
     public Mascota() {
     }
 
-    public Mascota(String alias,String sexo, String especie, boolean activo, Cliente cliente) {
-        this.alias=alias;
-        this.sexo = sexo;
-        this.especie = especie;
-        this.activo = activo;
-        this.cliente = cliente;
-    }
-    
-    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, double pesoPromedio, boolean activo, Cliente cliente) {
+    public Mascota(String alias, String sexo, TipoMascota especie, String colorPelaje, Date nacimiento, boolean activo, Cliente cliente) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
-        this.raza = raza;
-        this.colorPelaje = colorPelaje;       
+        this.colorPelaje = colorPelaje;
+        this.nacimiento = nacimiento;
         this.activo = activo;
         this.cliente = cliente;
     }
-    
-    public Mascota(int idMascota, String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, double pesoPromedio, boolean activo, Cliente cliente) {
-        this.idMascota = idMascota;
+
+    public Mascota(int codigo, String alias, String sexo, TipoMascota especie, String raza, String colorPelaje, Date fechaNac, double pesoActual, double pesoPromedio, boolean activo, Cliente cliente) {
+        this.codigo = codigo;
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
@@ -46,11 +39,11 @@ public class Mascota {
     }
 
     public int getIdMascota() {
-        return idMascota;
+        return codigo;
     }
 
-    public void setIdMascota(int idMascota) {
-        this.idMascota = idMascota;
+    public void setIdMascota(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getAlias() {
@@ -69,11 +62,11 @@ public class Mascota {
         this.sexo = sexo;
     }
 
-    public String getEspecie() {
+    public TipoMascota getEspecie() {
         return especie;
     }
 
-    public void setEspecie(String especie) {
+    public void setEspecie(TipoMascota especie) {
         this.especie = especie;
     }
 
@@ -101,6 +94,38 @@ public class Mascota {
         this.activo = activo;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public Date getNacimiento() {
+        return nacimiento;
+    }
+
+    public void setNacimiento(Date nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    public double getPesoActual() {
+        return pesoActual;
+    }
+
+    public void setPesoActual(double pesoActual) {
+        this.pesoActual = pesoActual;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
     public Cliente getDueño() {
         return cliente;
     }
@@ -111,8 +136,7 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return idMascota + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + ", raza=" + raza + ", colorPelaje=" + colorPelaje +", activo=" + activo + " dueño: " + cliente;
-    }
-    
+        return "Mascota{" + "codigo=" + codigo + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + '}';
+    }   
     
 }

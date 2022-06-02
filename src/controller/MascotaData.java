@@ -1,7 +1,7 @@
 
-package Veterinaria.controlador;
+package controller;
 
-import Veterinaria.modelo.Conexion;
+import model.Conexion;
 import java.sql.Connection;
 import java.sql.SQLException;
 

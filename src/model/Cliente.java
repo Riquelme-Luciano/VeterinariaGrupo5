@@ -1,50 +1,33 @@
+ package model;
 
-package Veterinaria.modelo;
+import java.util.List;
 
 public class Cliente {
-    private int idCliente;
     private long dni;
     private String nombre;
     private String apellido;
-    private String direccion;
     private long telefono;
+    private String direccion;
     private String contactoAlternativo;
-
+    private List<Mascota> mascotas;
+    
     public Cliente() {
     }
 
-    public Cliente(long dni, String nombre, String apellido, long telefono) {
+    public Cliente(String nombre, String apellido, long telefono, String direccion, String alternativa) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono= telefono;
     }
     
-    public Cliente(long dni, String nombre, String apellido, String direccion, long telefono, String alternativa) {
+    public Cliente(long dni, String nombre, String apellido, long telefono, String direccion, String alternativa) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
         contactoAlternativo = alternativa;
-    }
-
-    public Cliente(int idCliente, long dni, String nombre, String apellido, String direccion, long telefono, String alternativa) {
-        this.idCliente = idCliente;
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        contactoAlternativo = alternativa;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
     }
 
     public long getDni() {
@@ -97,7 +80,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return idCliente + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", alternativa=" + contactoAlternativo;
+        return  "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", alternativa=" + contactoAlternativo;
     }
     
     

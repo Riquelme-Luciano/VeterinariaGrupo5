@@ -1,28 +1,29 @@
+package model;
 
-package Veterinaria.modelo;
+import java.util.Date;
 
-import java.time.LocalDate;
-
-public class Consulta {
+public class Visita {
     private int idConsulta;
-    private LocalDate fecha;
+    private Date fecha;
     private double pesoMedido;
-    private Tratamiento tratamiento; //importe y idTratamiento
-    private Mascota mascota; //idMascota
+    private Tratamiento tratamiento;
+    private Mascota mascota; 
 
-    public Consulta() {
+    public Visita() {
     }
-    
-    public Consulta(Tratamiento tratamiento, LocalDate fecha, Mascota mascota) {
-        this.tratamiento = tratamiento;
+
+    public Visita(Date fecha,Mascota mascota,Tratamiento tratamiento, double pesoMedido) {
         this.fecha = fecha;
+        this.pesoMedido = pesoMedido;
+        this.tratamiento = tratamiento;
         this.mascota = mascota;
     }
-    
-    public Consulta(int idConsulta, Tratamiento tratamiento, LocalDate fecha, Mascota mascota) {
+
+    public Visita(int idConsulta, Date fecha,Mascota mascota,Tratamiento tratamiento, double pesoMedido) {
         this.idConsulta = idConsulta;
-        this.tratamiento = tratamiento;
         this.fecha = fecha;
+        this.pesoMedido = pesoMedido;
+        this.tratamiento = tratamiento;
         this.mascota = mascota;
     }
 
@@ -42,11 +43,11 @@ public class Consulta {
         this.tratamiento = tratamiento;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -58,10 +59,16 @@ public class Consulta {
         this.mascota = mascota;
     }
 
+    public double getPesoMedido() {
+        return pesoMedido;
+    }
+
+    public void setPesoMedido(double pesoMedido) {
+        this.pesoMedido = pesoMedido;
+    }    
+    
     @Override
     public String toString() {
         return idConsulta + ", tratamiento=" + tratamiento + ", fecha=" + fecha + ", mascota=" + mascota;
     }
-    
-    
 }

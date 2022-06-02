@@ -1,28 +1,38 @@
 
-package Veterinaria.controlador;
+package controller;
 
-import Veterinaria.modelo.Conexion;
+import model.Conexion;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-        
-public class ClienteData {
+public class ConsultaData {
     private Connection con=null;
-
-    public ClienteData(Conexion conexion) {
+    
+    public ConsultaData(Conexion conexion) {
         try {
             this.con = conexion.getConexion();
             
         } catch (SQLException e) {
-            System.out.println("Error de conexion en ClienteData");
+            System.out.println("Error de conexion en ConsultaData");
         }
     }
     
-  
     
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
     
 }

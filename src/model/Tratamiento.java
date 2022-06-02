@@ -1,5 +1,5 @@
 
-package Veterinaria.modelo;
+package model;
 
 public class Tratamiento {
     private int idTratamiento;
@@ -12,12 +12,6 @@ public class Tratamiento {
     public Tratamiento() {
     }
 
-    public Tratamiento(String tipo, double importe, boolean activo) {
-        this.tipo = tipo;
-        this.importe = importe;
-        this.activo = activo;
-    }
-    
     public Tratamiento(String tipo, String descripcion, String medicamento, double importe, boolean activo) {
         this.tipo = tipo;
         this.descripcion = descripcion;
@@ -25,7 +19,7 @@ public class Tratamiento {
         this.importe = importe;
         this.activo = activo;
     }
-
+    
     public Tratamiento(int idTratamiento, String tipo, String descripcion, String medicamento, double importe, boolean activo) {
         this.idTratamiento = idTratamiento;
         this.tipo = tipo;
@@ -33,8 +27,7 @@ public class Tratamiento {
         this.medicamento = medicamento;
         this.importe = importe;
         this.activo = activo;
-    }
-    
+    }  
     
     public int getIdTratamiento() {
         return idTratamiento;
