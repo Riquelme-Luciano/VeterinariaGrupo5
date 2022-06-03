@@ -1,4 +1,3 @@
-
 package Veterinaria.model;
 
 import Veterinaria.controller.ClienteData;

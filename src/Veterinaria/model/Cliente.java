@@ -9,34 +9,38 @@ public class Cliente {
     private String direccion;
     private long telefono;
     private String contactoAlternativo;
+    private boolean activo;
 
     public Cliente() {
     }
 
-    public Cliente(long dni, String nombre, String apellido, long telefono) {
+    public Cliente(long dni, String nombre, String apellido, long telefono, boolean activo) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.telefono= telefono;
+        this.telefono = telefono;
+        this.activo = activo;
     }
     
-    public Cliente(long dni, String nombre, String apellido, String direccion, long telefono, String alternativa) {
+    public Cliente(long dni, String nombre, String apellido, String direccion, long telefono, String contactoAlternativo, boolean activo) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
-        contactoAlternativo = alternativa;
+        this.contactoAlternativo = contactoAlternativo;
+        this.activo = activo;
     }
-
-    public Cliente(int idCliente, long dni, String nombre, String apellido, String direccion, long telefono, String alternativa) {
+    
+    public Cliente(int idCliente, long dni, String nombre, String apellido, String direccion, long telefono, String contactoAlternativo, boolean activo) {
         this.idCliente = idCliente;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
-        contactoAlternativo = alternativa;
+        this.contactoAlternativo = contactoAlternativo;
+        this.activo = activo;
     }
 
     public int getIdCliente() {
@@ -87,18 +91,27 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getAlternativa() {
+    public String getContactoAlternativo() {
         return contactoAlternativo;
     }
 
-    public void setAlternativa(String alternativa) {
-        this.contactoAlternativo = alternativa;
+    public void setContactoAlternativo(String contactoAlternativo) {
+        this.contactoAlternativo = contactoAlternativo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @Override
     public String toString() {
-        return nombre + " " + apellido + " "+ dni + " " + direccion + " " + telefono + " " + contactoAlternativo;
+        return idCliente + " " + dni + " " + nombre + " " + apellido + " " + direccion + " " + telefono + " " + contactoAlternativo + " " + activo;
     }
+  
     
     
 }

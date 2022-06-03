@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Conexion {
-    private String url="jdbc:mysql://localhost/veterinaria"; 
+private String url="jdbc:mysql://localhost/institucion"; 
     private String usuario="root"; 
     private String password="";
 
@@ -20,8 +20,8 @@ public class Conexion {
         try {
             Class.forName("org.mariadb.jdbc.Driver"); 
            
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"Error en la clase Conexion");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null,"Error de Conexion");
         }
     }
     
@@ -49,4 +49,5 @@ public class Conexion {
         return conexion;
     }
 }
+
 

@@ -3,23 +3,23 @@ package Veterinaria.model;
 
 import java.time.LocalDate;
 
-public class Visita {
+public class Consulta {
     private int idConsulta;
     private LocalDate fecha;
     private double pesoMedido;
     private Tratamiento tratamiento; //importe y idTratamiento
     private Mascota mascota; //idMascota
 
-    public Visita() {
+    public Consulta() {
     }
     
-    public Visita(Tratamiento tratamiento, LocalDate fecha, Mascota mascota) {
+    public Consulta(Tratamiento tratamiento, LocalDate fecha, Mascota mascota) {
         this.tratamiento = tratamiento;
         this.fecha = fecha;
         this.mascota = mascota;
     }
     
-    public Visita(int idConsulta, Tratamiento tratamiento, LocalDate fecha, Mascota mascota) {
+    public Consulta(int idConsulta, Tratamiento tratamiento, LocalDate fecha, Mascota mascota) {
         this.idConsulta = idConsulta;
         this.tratamiento = tratamiento;
         this.fecha = fecha;
