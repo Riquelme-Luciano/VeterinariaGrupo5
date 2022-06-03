@@ -120,11 +120,7 @@ public class MenuView extends javax.swing.JFrame {
         v.show();
     }//GEN-LAST:event_btnClientesActionPerformed
 
-    public static void main(String args[]) {
-         MenuView v = new MenuView();
-        v.setVisible(true);
-        v.setLocationRelativeTo(v);
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
