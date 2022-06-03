@@ -9,7 +9,7 @@ public class Main {
         MenuView v = new MenuView();
         v.setVisible(true);
         v.setLocationRelativeTo(v);
-
+        //main
     }
 
 }
