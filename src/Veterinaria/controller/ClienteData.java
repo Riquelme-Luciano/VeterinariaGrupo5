@@ -16,7 +16,7 @@ public class ClienteData {
 
     public ClienteData(Conexion conexion) {
         try {
-            this.con = conexion.getConexion();
+            con = conexion.getConexion();
             
         } catch (SQLException e) {
             System.out.println("Error de conexion en ClienteData");
@@ -33,7 +33,7 @@ public class ClienteData {
             ps.setString(3, cliente.getApellido());
             ps.setLong(4, cliente.getTelefono());
             ps.setString(5, cliente.getDireccion());
-            ps.setString(6, cliente.getAlternativa());
+            ps.setString(6, cliente.getContactoAlternativo());
 
             ps.executeUpdate();
             ps.close();
@@ -54,7 +54,7 @@ public class ClienteData {
             ps.setString(2, cliente.getApellido());
             ps.setLong(3, cliente.getTelefono());
             ps.setString(4, cliente.getDireccion());
-            ps.setString(5, cliente.getAlternativa());
+            ps.setString(5, cliente.getContactoAlternativo());
             ps.setLong(6, cliente.getDni());
 
             ps.executeUpdate();
@@ -96,7 +96,7 @@ public class ClienteData {
                 c.setApellido(rs.getString("apellido"));
                 c.setDireccion(rs.getString("direccion"));
                 c.setTelefono(rs.getInt("telefono"));
-                c.setAlternativa(rs.getString("contactoAlternativo"));
+                c.setContactoAlternativo(rs.getString("contactoAlternativo"));
                 lista.add(c);  
             }
             ps.close();
