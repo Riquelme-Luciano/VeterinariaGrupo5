@@ -3,28 +3,35 @@ package model;
 import java.util.Date;
 
 public class Visita {
+
     private int idConsulta;
     private Date fecha;
-    private double pesoMedido;
+    private Mascota mascota;
     private Tratamiento tratamiento;
-    private Mascota mascota; 
-
+    private double pesoMedido;
+    private double cobro;
+    private String detalle;
+    
     public Visita() {
     }
 
-    public Visita(Date fecha,Mascota mascota,Tratamiento tratamiento, double pesoMedido) {
+    public Visita(Date fecha, Mascota mascota, Tratamiento tratamiento, double pesoMedido, double cobro, String detalle) {
         this.fecha = fecha;
-        this.pesoMedido = pesoMedido;
-        this.tratamiento = tratamiento;
         this.mascota = mascota;
+        this.tratamiento = tratamiento;
+        this.pesoMedido = pesoMedido;
+        this.cobro = cobro;
+        this.detalle = detalle;
     }
 
-    public Visita(int idConsulta, Date fecha,Mascota mascota,Tratamiento tratamiento, double pesoMedido) {
+    public Visita(int idConsulta, Date fecha, Mascota mascota, Tratamiento tratamiento, double pesoMedido, double cobro, String detalle) {
         this.idConsulta = idConsulta;
         this.fecha = fecha;
-        this.pesoMedido = pesoMedido;
-        this.tratamiento = tratamiento;
         this.mascota = mascota;
+        this.tratamiento = tratamiento;
+        this.pesoMedido = pesoMedido;
+        this.cobro = cobro;
+        this.detalle = detalle;
     }
 
     public int getIdConsulta() {
@@ -65,8 +72,24 @@ public class Visita {
 
     public void setPesoMedido(double pesoMedido) {
         this.pesoMedido = pesoMedido;
-    }    
-    
+    }
+
+    public double getCobro() {
+        return cobro;
+    }
+
+    public void setCobro(double cobro) {
+        this.cobro = cobro;
+    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
     @Override
     public String toString() {
         return idConsulta + ", tratamiento=" + tratamiento + ", fecha=" + fecha + ", mascota=" + mascota;

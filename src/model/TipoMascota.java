@@ -14,7 +14,7 @@ public enum TipoMascota {
 
     @Override
     public String toString() {
-        return "Especie=" + especie + '}';
+        return  especie;
     }
        
 }

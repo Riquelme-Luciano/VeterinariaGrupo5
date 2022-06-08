@@ -1,11 +1,11 @@
-package model;
+  package model;
 
 import java.util.Date;
 
 public class Mascota {
     private int codigo;
     private String alias;
-    private String sexo;
+    private char sexo;
     private TipoMascota especie;
     private String raza;
     private String colorPelaje;
@@ -17,7 +17,7 @@ public class Mascota {
     public Mascota() {
     }
 
-    public Mascota(String alias, String sexo, TipoMascota especie, String colorPelaje, Date nacimiento, boolean activo, Cliente cliente) {
+    public Mascota(String alias, char sexo, TipoMascota especie, String colorPelaje, Date nacimiento, boolean activo, Cliente cliente) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
@@ -27,7 +27,7 @@ public class Mascota {
         this.cliente = cliente;
     }
 
-    public Mascota(int codigo, String alias, String sexo, TipoMascota especie, String raza, String colorPelaje, Date fechaNac, double pesoActual, double pesoPromedio, boolean activo, Cliente cliente) {
+    public Mascota(int codigo, String alias, char sexo, TipoMascota especie, String raza, String colorPelaje, Date fechaNac, boolean activo, Cliente cliente) {
         this.codigo = codigo;
         this.alias = alias;
         this.sexo = sexo;
@@ -37,15 +37,21 @@ public class Mascota {
         this.activo = activo;
         this.cliente = cliente;
     }
-
-    public int getIdMascota() {
-        return codigo;
+    
+        public static TipoMascota validarTipoMascota(String especie) {
+        switch (especie) {
+            case "Perro":
+                return TipoMascota.PERRO;
+            case "Gato":
+                return TipoMascota.GATO;
+            case "Hamster":
+                return TipoMascota.HAMSTER;
+            case "Loro":
+                return TipoMascota.LORO;
+        }
+        return null;
     }
-
-    public void setIdMascota(int codigo) {
-        this.codigo = codigo;
-    }
-
+    
     public String getAlias() {
         return alias;
     }
@@ -54,11 +60,11 @@ public class Mascota {
         this.alias = alias;
     }
 
-    public String getSexo() {
+    public char getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(char sexo) {
         this.sexo = sexo;
     }
 
@@ -136,7 +142,10 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return "Mascota{" + "codigo=" + codigo + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + '}';
-    }   
+        return "Mascota{" + "codigo=" + codigo + ", alias=" + alias + ", sexo=" + sexo + ", especie=" + especie + ", raza=" + raza + ", colorPelaje=" + colorPelaje + ", nacimiento=" + nacimiento + ", activo=" + activo + ", pesoActual=" + pesoActual + ", cliente=" + cliente + '}';
+    }
+
+   
+    
     
 }

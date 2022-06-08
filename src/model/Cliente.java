@@ -80,7 +80,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return  "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", telefono=" + telefono + ", alternativa=" + contactoAlternativo;
+        return nombre + " " + apellido;
     }
     
     
