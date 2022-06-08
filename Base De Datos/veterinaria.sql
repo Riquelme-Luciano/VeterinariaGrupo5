@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2022 at 04:19 PM
+-- Generation Time: Jun 08, 2022 at 02:31 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -33,15 +33,27 @@ CREATE TABLE `cliente` (
   `apellido` varchar(45) NOT NULL,
   `telefono` int(15) NOT NULL,
   `direccion` varchar(45) DEFAULT NULL,
-  `personaAlternativa` varchar(45) DEFAULT NULL
+  `personaAlternativa` varchar(45) DEFAULT NULL,
+  `activo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cliente`
 --
 
-INSERT INTO `cliente` (`documento`, `nombre`, `apellido`, `telefono`, `direccion`, `personaAlternativa`) VALUES
-(47497200, 'Daniel', 'Barros', 3444232, 'San Martin', 'Matias');
+INSERT INTO `cliente` (`documento`, `nombre`, `apellido`, `telefono`, `direccion`, `personaAlternativa`, `activo`) VALUES
+(7200332, 'Tadeo', 'Sanchez', 123433, 'Uruguay 12', 'Carlos', 0),
+(11032123, 'Carlos', 'Gimenez', 3123212, 'Av España', 'Susana', 0),
+(12032123, 'Olga', 'Gimenez', 312321, 'Av Libertador', 'Pedro', 0),
+(16200332, 'Geronimo', 'Maldonado', 567431, '25 de Mayo', 'Liliana', 0),
+(19200332, 'Julio', 'Veliz', 4423433, 'Gral Roca', 'Sabrina', 0),
+(20200332, 'Lucas', 'Salasa', 683641, 'Sargento Cabral', 'Santiago', 0),
+(21233454, 'Daniela', 'Nuñezx', 23212342, 'La Rotonda', 'Carlos', 0),
+(23124567, 'Santigo', 'Perez', 3544231, 'San Martin', 'Eduardo', 0),
+(38920123, 'Roque', 'Barros', 3544231, 'San Martin', 'Julieta', 0),
+(40200332, 'Nicolas', 'Salas', 980641, '25 de Mayo', 'Rosa', 0),
+(47497200, 'Daniel', 'Barros', 3444232, 'San Martin', 'Matias', 0),
+(49200332, 'Jose', 'Messi', 312321, 'Belgrano 219', 'Lionel', 0);
 
 -- --------------------------------------------------------
 
@@ -52,7 +64,7 @@ INSERT INTO `cliente` (`documento`, `nombre`, `apellido`, `telefono`, `direccion
 CREATE TABLE `mascota` (
   `codigo` int(11) NOT NULL,
   `alias` varchar(45) DEFAULT NULL,
-  `sexo` char(1) NOT NULL,
+  `sexo` varchar(1) NOT NULL,
   `especie` varchar(45) NOT NULL,
   `raza` varchar(45) DEFAULT NULL,
   `color` varchar(45) NOT NULL,
@@ -60,6 +72,22 @@ CREATE TABLE `mascota` (
   `documentoCliente` int(11) NOT NULL,
   `activo` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `mascota`
+--
+
+INSERT INTO `mascota` (`codigo`, `alias`, `sexo`, `especie`, `raza`, `color`, `nacimiento`, `documentoCliente`, `activo`) VALUES
+(2, 'sad', 'M', 'Perro', 'dsads', 'dsa', '2022-06-01', 7200332, 0),
+(3, 'Roque', 'M', 'Perro', 'Beagle', 'Tricolor', '2021-06-05', 16200332, 1),
+(4, 'Black', 'M', 'Perro', 'Doberman', 'Negro', '2020-06-19', 20200332, 1),
+(5, 'Oli', 'H', 'Perro', 'Nose', 'Negro', '2021-06-12', 12032123, 1),
+(6, 'Flaca', 'H', 'Perro', '', 'Blanco', '2019-06-08', 49200332, 0),
+(7, 'Cejas', 'M', 'Perro', 'Pitbull', 'Gris', '2020-06-19', 19200332, 1),
+(8, 'Roco', 'M', 'Perro', 'Caniche', 'Gris', '2021-06-05', 23124567, 1),
+(9, 'Gorda', 'H', 'Perro', 'Chihuahua', 'Marron', '2011-06-01', 47497200, 1),
+(10, 'Floki', 'M', 'Perro', 'Batato', 'Tricolor', '2017-06-16', 16200332, 1),
+(11, 'Locona', 'H', 'Loro', 'Cotorra', 'Negro', '2019-06-15', 11032123, 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +161,7 @@ ALTER TABLE `visita`
 -- AUTO_INCREMENT for table `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tratamiento`
