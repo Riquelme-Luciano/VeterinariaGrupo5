@@ -9,17 +9,15 @@ import model.Conexion;
 public class ClienteData {
 
     private Connection con = null;
-    private Conexion conexion;
 
     public ClienteData(Conexion conexion) {
-        this.conexion = conexion;
-        //this.con=conexion.getConexion();
+        this.con=conexion.getConexion();
     }
 
     public int insertarCliente(Cliente cliente) {
         String instruccion = "INSERT INTO cliente(documento,nombre,apellido,telefono,direccion,personaAlternativa) VALUES (?,?,?,?,?,?)";
         try {
-            this.con = conexion.getConexion();
+            //this.con = conexion.getConexion();
             PreparedStatement ps = con.prepareStatement(instruccion);
             ps.setLong(1, cliente.getDni());
             ps.setString(2, cliente.getNombre());
@@ -29,6 +27,7 @@ public class ClienteData {
             ps.setString(6, cliente.getAlternativa());
 
             ps.executeUpdate();
+            System.out.println("cliente creado con exito");
             this.con.close();
             return 1;
         } catch (Exception e) {
@@ -40,7 +39,7 @@ public class ClienteData {
     public int actualizarCliente(Cliente cliente) {
         String instruccion = "UPDATE cliente SET nombre=?, apellido=?, telefono=?, direccion=? , personaAlternativa=? WHERE documento=?";
         try {
-            this.con = conexion.getConexion();
+            //this.con = conexion.getConexion();
             PreparedStatement ps = con.prepareStatement(instruccion);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getApellido());
@@ -50,6 +49,7 @@ public class ClienteData {
             ps.setLong(6, cliente.getDni());
 
             ps.executeUpdate();
+            System.out.println("Cliente actualizado con exito");
 
             this.con.close();
             return 1;
@@ -62,7 +62,7 @@ public class ClienteData {
     public void eliminarCliente(int documento) {
         String instruccion = "DELETE FROM cliente WHERE documento=?";
         try {
-            this.con = conexion.getConexion();
+            //this.con = conexion.getConexion();
             PreparedStatement ps = con.prepareStatement(instruccion);
             ps.setInt(1, documento);
             ps.executeUpdate();
@@ -73,7 +73,7 @@ public class ClienteData {
     }
     
        public List listar() {
-        this.con = conexion.getConexion();
+        //this.con = conexion.getConexion();
         List<Cliente> datos = new ArrayList<>();
         String instruccion = "SELECT * FROM cliente";
         try {
@@ -96,5 +96,30 @@ public class ClienteData {
         }
 
         return datos;
+    }
+       
+       public Cliente buscarCliente(int dni) {
+        Cliente c = new Cliente();
+        String sql = "SELECT nombre, apellido, telefono,direccion,personaAlternativa FROM cliente WHERE documento=?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql); // Tener el string con la sentencia sql
+            ps.setInt(1, dni); // seteo al sql el parametro dinamico el id
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                c.setNombre(rs.getString("nombre"));
+                c.setApellido(rs.getString("apellido"));
+                c.setTelefono(rs.getLong("telefono"));//convertir de date a LocalDate
+                c.setDireccion(rs.getString("direccion"));
+                c.setAlternativa(rs.getString("personaAlternativa")); 
+            }
+           
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error de conexion con base de datos en buscar cliente"+ex);
+        }
+        return c;
     }
 }

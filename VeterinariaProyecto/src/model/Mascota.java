@@ -37,6 +37,20 @@ public class Mascota {
         this.activo = activo;
         this.cliente = cliente;
     }
+    
+    public static TipoMascota validarTipoMascota(String especie) {
+        switch (especie) {
+            case "Perro":
+                return TipoMascota.PERRO;
+            case "Gato":
+                return TipoMascota.GATO;
+            case "Hamster":
+                return TipoMascota.HAMSTER;
+            case "Loro":
+                return TipoMascota.LORO;
+        }
+        return null;
+    }
 
     public String getAlias() {
         return alias;
