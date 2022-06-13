@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 08, 2022 at 02:31 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 14-06-2022 a las 00:53:28
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `veterinaria`
+-- Base de datos: `veterinaria`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cliente`
+-- Estructura de tabla para la tabla `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -38,27 +38,27 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cliente`
+-- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`documento`, `nombre`, `apellido`, `telefono`, `direccion`, `personaAlternativa`, `activo`) VALUES
-(7200332, 'Tadeo', 'Sanchez', 123433, 'Uruguay 12', 'Carlos', 0),
+(7200332, 'Tadeo', 'Sanchez', 123433, 'Uruguay 12', 'Carlos', 1),
 (11032123, 'Carlos', 'Gimenez', 3123212, 'Av España', 'Susana', 0),
-(12032123, 'Olga', 'Gimenez', 312321, 'Av Libertador', 'Pedro', 0),
+(12032123, 'Olga', 'Gimenez', 312321, 'Av Libertador', 'Pedro', 1),
 (16200332, 'Geronimo', 'Maldonado', 567431, '25 de Mayo', 'Liliana', 0),
-(19200332, 'Julio', 'Veliz', 4423433, 'Gral Roca', 'Sabrina', 0),
+(19200332, 'Julio', 'Veliz', 4423433, 'Gral Roca', 'Sabrina', 1),
 (20200332, 'Lucas', 'Salasa', 683641, 'Sargento Cabral', 'Santiago', 0),
-(21233454, 'Daniela', 'Nuñezx', 23212342, 'La Rotonda', 'Carlos', 0),
-(23124567, 'Santigo', 'Perez', 3544231, 'San Martin', 'Eduardo', 0),
-(38920123, 'Roque', 'Barros', 3544231, 'San Martin', 'Julieta', 0),
-(40200332, 'Nicolas', 'Salas', 980641, '25 de Mayo', 'Rosa', 0),
-(47497200, 'Daniel', 'Barros', 3444232, 'San Martin', 'Matias', 0),
-(49200332, 'Jose', 'Messi', 312321, 'Belgrano 219', 'Lionel', 0);
+(21233454, 'Daniela', 'Nuñezx', 23212342, 'La Rotonda', 'Carlos', 1),
+(23124567, 'Santigo', 'Perez', 3544231, 'San Martin', 'Eduardo', 1),
+(38920123, 'Roque', 'Barros', 3544231, 'San Martin', 'Julieta', 1),
+(40200332, 'Nicolas', 'Salas', 980641, '25 de Mayo', 'Rosa', 1),
+(47497200, 'Daniel', 'Barros', 3444232, 'San Martin', 'Matias', 1),
+(49200332, 'Jose', 'Messi', 312321, 'Belgrano 219', 'Lionel', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mascota`
+-- Estructura de tabla para la tabla `mascota`
 --
 
 CREATE TABLE `mascota` (
@@ -74,40 +74,51 @@ CREATE TABLE `mascota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `mascota`
+-- Volcado de datos para la tabla `mascota`
 --
 
 INSERT INTO `mascota` (`codigo`, `alias`, `sexo`, `especie`, `raza`, `color`, `nacimiento`, `documentoCliente`, `activo`) VALUES
 (2, 'sad', 'M', 'Perro', 'dsads', 'dsa', '2022-06-01', 7200332, 0),
-(3, 'Roque', 'M', 'Perro', 'Beagle', 'Tricolor', '2021-06-05', 16200332, 1),
-(4, 'Black', 'M', 'Perro', 'Doberman', 'Negro', '2020-06-19', 20200332, 1),
+(3, 'Roque', 'M', 'Perro', 'Beagle', 'Tricolor', '2021-06-05', 16200332, 0),
+(4, 'Black', 'M', 'Perro', 'Doberman', 'Negro', '2020-06-19', 20200332, 0),
 (5, 'Oli', 'H', 'Perro', 'Nose', 'Negro', '2021-06-12', 12032123, 1),
 (6, 'Flaca', 'H', 'Perro', '', 'Blanco', '2019-06-08', 49200332, 0),
 (7, 'Cejas', 'M', 'Perro', 'Pitbull', 'Gris', '2020-06-19', 19200332, 1),
 (8, 'Roco', 'M', 'Perro', 'Caniche', 'Gris', '2021-06-05', 23124567, 1),
 (9, 'Gorda', 'H', 'Perro', 'Chihuahua', 'Marron', '2011-06-01', 47497200, 1),
-(10, 'Floki', 'M', 'Perro', 'Batato', 'Tricolor', '2017-06-16', 16200332, 1),
-(11, 'Locona', 'H', 'Loro', 'Cotorra', 'Negro', '2019-06-15', 11032123, 1);
+(10, 'Floki', 'M', 'Perro', 'Batato', 'Tricolor', '2017-06-16', 16200332, 0),
+(11, 'Locona', 'H', 'Loro', 'Cotorra', 'Negro', '2019-06-15', 11032123, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tratamiento`
+-- Estructura de tabla para la tabla `tratamiento`
 --
 
 CREATE TABLE `tratamiento` (
   `id` int(11) NOT NULL,
   `tipo` varchar(45) NOT NULL,
-  `descripcion` varchar(45) DEFAULT NULL,
+  `descripcion` varchar(80) DEFAULT NULL,
   `medicamento` varchar(45) DEFAULT NULL,
   `importe` double NOT NULL,
   `activo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tratamiento`
+--
+
+INSERT INTO `tratamiento` (`id`, `tipo`, `descripcion`, `medicamento`, `importe`, `activo`) VALUES
+(1, 'Vacunación', 'Vacunacion para CAN con vac-20PB12', 'vac-20PB12', 2000, 1),
+(2, 'Vacunación', 'Otra vacunacion mas', 'dasdde', 3000, 0),
+(3, 'Vacunación', 'Otro para borrar', 'vac-20PB12', 2500, 0),
+(4, 'Desparacitacion', 'Desaparacitacion con medicamento especializado', 'VAC-99PRANTI', 5000, 1),
+(5, 'Operacion', 'Operacion de una pata', 'Analgesico 221321', 7000, 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `visita`
+-- Estructura de tabla para la tabla `visita`
 --
 
 CREATE TABLE `visita` (
@@ -120,18 +131,18 @@ CREATE TABLE `visita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `cliente`
+-- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`documento`),
   ADD UNIQUE KEY `documento_UNIQUE` (`documento`);
 
 --
--- Indexes for table `mascota`
+-- Indices de la tabla `mascota`
 --
 ALTER TABLE `mascota`
   ADD PRIMARY KEY (`codigo`),
@@ -139,14 +150,14 @@ ALTER TABLE `mascota`
   ADD KEY `idCliente_idx` (`documentoCliente`);
 
 --
--- Indexes for table `tratamiento`
+-- Indices de la tabla `tratamiento`
 --
 ALTER TABLE `tratamiento`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_UNIQUE` (`id`);
 
 --
--- Indexes for table `visita`
+-- Indices de la tabla `visita`
 --
 ALTER TABLE `visita`
   ADD PRIMARY KEY (`idVisita`),
@@ -154,39 +165,39 @@ ALTER TABLE `visita`
   ADD KEY `tratamiento_idx` (`idTratamiento`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `mascota`
+-- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tratamiento`
+-- AUTO_INCREMENT de la tabla `tratamiento`
 --
 ALTER TABLE `tratamiento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `visita`
+-- AUTO_INCREMENT de la tabla `visita`
 --
 ALTER TABLE `visita`
   MODIFY `idVisita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `mascota`
+-- Filtros para la tabla `mascota`
 --
 ALTER TABLE `mascota`
   ADD CONSTRAINT `cliente` FOREIGN KEY (`documentoCliente`) REFERENCES `cliente` (`documento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `visita`
+-- Filtros para la tabla `visita`
 --
 ALTER TABLE `visita`
   ADD CONSTRAINT `idMascota` FOREIGN KEY (`idMascota`) REFERENCES `mascota` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
