@@ -1,4 +1,4 @@
- 
+
 package model;
 
 public class Tratamiento {
@@ -79,7 +79,7 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return idTratamiento + " " + tipo + " " + descripcion + " " + medicamento + " " + importe + " " + activo;
+        return idTratamiento + ", tipo=" + tipo + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", importe=" + importe + ", activo=" + activo;
     }
     
     

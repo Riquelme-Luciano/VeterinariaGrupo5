@@ -35,6 +35,7 @@ public class MenuView extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1030, 530));
         setResizable(false);
 
         panelPrincipal.setBackground(new java.awt.Color(11, 95, 93));
@@ -45,7 +46,6 @@ public class MenuView extends javax.swing.JFrame {
         background.setPreferredSize(new java.awt.Dimension(900, 500));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -64,7 +64,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addContainerGap(146, Short.MAX_VALUE))
         );
 
-        panelPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, -2, 780, 530));
+        panelPrincipal.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, -2, 900, 530));
 
         panelBtnes.setBackground(new java.awt.Color(11, 95, 93));
         panelBtnes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,7 +82,7 @@ public class MenuView extends javax.swing.JFrame {
 
         btnCliente.setBackground(new java.awt.Color(11, 95, 93));
         btnCliente.setForeground(new java.awt.Color(11, 95, 93));
-        btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCliente.setFocusable(false);
         btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,7 +129,7 @@ public class MenuView extends javax.swing.JFrame {
 
         btnMascotas.setBackground(new java.awt.Color(11, 95, 93));
         btnMascotas.setForeground(new java.awt.Color(11, 95, 93));
-        btnMascotas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMascotas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMascotas.setFocusable(false);
         btnMascotas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -176,7 +176,7 @@ public class MenuView extends javax.swing.JFrame {
 
         btnTratamiento.setBackground(new java.awt.Color(11, 95, 93));
         btnTratamiento.setForeground(new java.awt.Color(11, 95, 93));
-        btnTratamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnTratamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTratamiento.setFocusable(false);
         btnTratamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

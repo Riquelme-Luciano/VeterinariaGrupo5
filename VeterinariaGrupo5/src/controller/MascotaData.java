@@ -31,25 +31,19 @@ public class MascotaData {
             ps.setString(3, m.getEspecie().toString());
             ps.setString(4, m.getRaza());
             ps.setString(5, m.getColorPelaje());
-            
             //hago la conversion para que me inserte fecha de tipo date.sql
             long d = m.getNacimiento().getTime();
             java.sql.Date fechaNacimiento = new java.sql.Date(d);
-            
-            ////Hago esta conversion para que me ande en el main//
-            //porque si no, me devuelve null la fecha y lanza error//
-//            java.util.Date date = new java.util.Date();
-//            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-            ps.setDate(6,fechaNacimiento);
+            ps.setDate(6, fechaNacimiento);
             //------
             ps.setLong(7, m.getDueño().getDni());
             ps.setBoolean(8, true);
 
-            System.out.println("mascota insertada");
+            System.out.println("aca");
             ps.executeUpdate();
             return 1;
         } catch (SQLException e) {
-            System.err.println("Error al insertar mascota a la bd" + e);
+            System.out.println("Error al insertar mascota a la bd" + e);
             return 0;
         }
     }
@@ -118,37 +112,5 @@ public class MascotaData {
         }
 
         return datos;
-    }
-
-    public Mascota buscarMascota(int codigo) {
-        Mascota m= new Mascota();
-        String sql;
-        PreparedStatement ps;
-        ResultSet rs;
-        try {
-            sql="SELECT codigo,alias,sexo,especie,raza,color,nacimiento,documentoCliente,activo FROM mascota WHERE activo=1 AND codigo=?;";
-            ps=con.prepareStatement(sql);
-            ps.setInt(1, codigo);
-            rs=ps.executeQuery();
-            if (rs.next()) {
-                m.setCodigo(rs.getInt("codigo"));
-                m.setAlias(rs.getString("alias"));
-                m.setSexo(rs.getString("sexo").charAt(0));
-                m.setEspecie(Mascota.validarTipoMascota(rs.getString(4)));
-                m.setRaza(rs.getString("raza"));
-                m.setColorPelaje(rs.getString("color"));
-
-                m.setNacimiento(rs.getDate("nacimiento"));
-
-                m.setCliente(dataCliente.buscarCliente(rs.getInt("documentoCliente")));
-                m.setActivo(rs.getBoolean("activo"));
-            }
-            ps.close();
-            System.out.println("mascota encontrada\n"+m);
-        } catch (SQLException e) {
-            System.err.println("error en buscar mascota");
-        }
-        
-        return m;
     }
 }

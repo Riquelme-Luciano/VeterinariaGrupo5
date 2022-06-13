@@ -85,7 +85,7 @@ public class MascotasView extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tablaMascotas);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 770, 330));
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 770, 330));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N

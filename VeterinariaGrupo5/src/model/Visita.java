@@ -5,26 +5,35 @@ import java.util.Date;
 public class Visita {
 
     private int idConsulta;
+    private Date fecha;
     private Mascota mascota;
     private Tratamiento tratamiento;
-    private Date fecha;
-//    private double cobro;
-    private String detalle;
     private double pesoMedido;
+    private double cobro;
+    private String detalle;
     
     public Visita() {
     }
 
-    public Visita(int idConsulta, Mascota mascota, Tratamiento tratamiento, Date fecha, String detalle, double pesoMedido) {
-        this.idConsulta = idConsulta;
+    public Visita(Date fecha, Mascota mascota, Tratamiento tratamiento, double pesoMedido, double cobro, String detalle) {
+        this.fecha = fecha;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
-        this.fecha = fecha;
-        this.detalle = detalle;
         this.pesoMedido = pesoMedido;
+        this.cobro = cobro;
+        this.detalle = detalle;
     }
 
-   
+    public Visita(int idConsulta, Date fecha, Mascota mascota, Tratamiento tratamiento, double pesoMedido, double cobro, String detalle) {
+        this.idConsulta = idConsulta;
+        this.fecha = fecha;
+        this.mascota = mascota;
+        this.tratamiento = tratamiento;
+        this.pesoMedido = pesoMedido;
+        this.cobro = cobro;
+        this.detalle = detalle;
+    }
+
     public int getIdConsulta() {
         return idConsulta;
     }
@@ -64,7 +73,7 @@ public class Visita {
     public void setPesoMedido(double pesoMedido) {
         this.pesoMedido = pesoMedido;
     }
-/*
+
     public double getCobro() {
         return cobro;
     }
@@ -72,7 +81,7 @@ public class Visita {
     public void setCobro(double cobro) {
         this.cobro = cobro;
     }
-*/
+
     public String getDetalle() {
         return detalle;
     }
