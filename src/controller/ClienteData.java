@@ -9,7 +9,7 @@ import model.Conexion;
 public class ClienteData {
 
     private Connection con = null;
-
+    
     public ClienteData(Conexion conexion) {
         this.con=conexion.getConexion();
     }
@@ -54,11 +54,15 @@ public class ClienteData {
     }
 
     public void eliminarCliente(int documento) {
-        String instruccion = "DELETE FROM cliente WHERE documento=?";
+        String instruccion = "UPDATE cliente INNER JOIN mascota "
+                + "ON cliente.documento=mascota.documentoCliente SET cliente.activo=false,mascota.activo=false "
+                + "WHERE cliente.documento=? AND mascota.documentoCliente=?";
         try {
             PreparedStatement ps = con.prepareStatement(instruccion);
             ps.setInt(1, documento);
+            ps.setInt(2,documento);
             ps.executeUpdate();
+            
         } catch (Exception e) {
             System.out.println("Error al querer eliminar cliente en data" + e);
         }
@@ -67,7 +71,7 @@ public class ClienteData {
     public List listar() {
         
         List<Cliente> datos = new ArrayList<>();
-        String instruccion = "SELECT * FROM cliente";
+        String instruccion = "SELECT * FROM cliente WHERE activo=true";
         try {
             PreparedStatement ps = con.prepareStatement(instruccion);
             ResultSet rs = ps.executeQuery();

@@ -292,7 +292,14 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMascotasMouseReleased
 
     private void btnTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTratamientoMouseClicked
-        // TODO add your handling code here:
+        TratamientoView v = new TratamientoView();
+        v.setSize(800,500);
+        v.setLocation(0,0);
+        
+        this.background.removeAll();//limpia el contenedor
+        this.background.add(v, BorderLayout.CENTER);
+        this.background.revalidate();
+        this.background.repaint();
     }//GEN-LAST:event_btnTratamientoMouseClicked
 
     private void btnTratamientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTratamientoMouseEntered
