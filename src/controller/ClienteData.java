@@ -15,7 +15,7 @@ public class ClienteData {
     }
 
     public int insertarCliente(Cliente cliente) {
-        String instruccion = "INSERT INTO cliente(documento,nombre,apellido,telefono,direccion,personaAlternativa) VALUES (?,?,?,?,?,?)";
+        String instruccion = "INSERT INTO cliente(documento,nombre,apellido,telefono,direccion,personaAlternativa,activo) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(instruccion);
             ps.setLong(1, cliente.getDni());
@@ -24,7 +24,8 @@ public class ClienteData {
             ps.setLong(4, cliente.getTelefono());
             ps.setString(5, cliente.getDireccion());
             ps.setString(6, cliente.getAlternativa());
-
+            ps.setBoolean(7, true);
+            
             ps.executeUpdate();
            
             return 1;
