@@ -15,7 +15,7 @@ public class ClienteData {
     }
 
     public int insertarCliente(Cliente cliente) {
-        String instruccion = "INSERT INTO cliente(documento,nombre,apellido,telefono,direccion,personaAlternativa) VALUES (?,?,?,?,?,?)";
+        String instruccion = "INSERT INTO cliente(documento,nombre,apellido,telefono,direccion,personaAlternativa,activo) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(instruccion);
             ps.setLong(1, cliente.getDni());
@@ -24,7 +24,8 @@ public class ClienteData {
             ps.setLong(4, cliente.getTelefono());
             ps.setString(5, cliente.getDireccion());
             ps.setString(6, cliente.getAlternativa());
-
+            ps.setBoolean(7, true);
+            
             ps.executeUpdate();
            
             return 1;
@@ -68,6 +69,18 @@ public class ClienteData {
         }
     }
 
+    public void eliminarClienteSinMascota(int documento){
+        String instruccion = "UPDATE cliente SET activo=0 WHERE documento=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setInt(1, documento);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("Error al querer eliminar cliente en data" + e);
+        }
+    }
+    
     public List listar() {
         
         List<Cliente> datos = new ArrayList<>();

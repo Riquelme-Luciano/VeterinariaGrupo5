@@ -39,10 +39,13 @@ public class MascotasView extends javax.swing.JPanel {
     ArrayList<Mascota> lista = new ArrayList();
     ArrayList<Mascota> listaFiltro = new ArrayList();
 
+    Cliente clienteFiltro = new Cliente();
+
     public MascotasView() {
         initComponents();
         backgroundInsert.setVisible(false);
         listar(tablaMascotas);
+        this.panelSubMenuFiltrarPor.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -50,6 +53,10 @@ public class MascotasView extends javax.swing.JPanel {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
+        panelSubMenuFiltrarPor = new javax.swing.JPanel();
+        comboFiltro = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMascotas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -66,6 +73,34 @@ public class MascotasView extends javax.swing.JPanel {
 
         background.setBackground(new java.awt.Color(11, 95, 93));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelSubMenuFiltrarPor.setBackground(new java.awt.Color(102, 0, 102));
+        panelSubMenuFiltrarPor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        comboFiltro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboFiltroItemStateChanged(evt);
+            }
+        });
+        panelSubMenuFiltrarPor.add(comboFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 170, 20));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Cliente");
+        panelSubMenuFiltrarPor.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 7, -1, 20));
+
+        background.add(panelSubMenuFiltrarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 190, 60));
+
+        jButton1.setBackground(new java.awt.Color(102, 0, 102));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Filtrar por");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 30));
 
         tablaMascotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,13 +222,22 @@ public class MascotasView extends javax.swing.JPanel {
             seleccionar();
             MascotaInsertarView.btnGuardar.setEnabled(false);
             MascotaInsertarView.btnActualizar.setEnabled(true);
-        }else{
+        } else {
             MascotaInsertarView.btnGuardar.setEnabled(true);
             MascotaInsertarView.btnActualizar.setEnabled(false);
         }
-       
+
 
     }//GEN-LAST:event_btnNewMascotaActionPerformed
+
+    public void llenarComboDueños() {
+        comboFiltro.removeAllItems();
+        Vector<Cliente> clientes = new Vector<Cliente>(dataCliente.listar());
+        comboFiltro.addItem(null);
+        for (Cliente cliente : clientes) {
+            comboFiltro.addItem(cliente);
+        }
+    }
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int fila = tablaMascotas.getSelectedRow();
@@ -210,6 +254,27 @@ public class MascotasView extends javax.swing.JPanel {
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
         filtrar();
     }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void comboFiltroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboFiltroItemStateChanged
+        clienteFiltro = (Cliente) comboFiltro.getSelectedItem();
+        if (clienteFiltro == null) {
+            listar(tablaMascotas);
+        } else {
+            listarPorCliente(tablaMascotas, clienteFiltro);
+        }
+    }//GEN-LAST:event_comboFiltroItemStateChanged
+
+    private int nMenu = 1;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (nMenu == 1) {
+            llenarComboDueños();
+            this.panelSubMenuFiltrarPor.setVisible(true);
+            nMenu = 0;
+        } else if (nMenu == 0) {
+            this.panelSubMenuFiltrarPor.setVisible(false);
+            nMenu = 1;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void listar(JTable tabla) {
         modelo.setRowCount(0);
@@ -231,7 +296,7 @@ public class MascotasView extends javax.swing.JPanel {
         tablaMascotas.setModel(modelo);
     }
 
-    public void listar(JTable tabla,ArrayList<Mascota> l) {
+    public void listar(JTable tabla, ArrayList<Mascota> l) {
         modelo.setRowCount(0);
         modelo = (DefaultTableModel) tabla.getModel();
         lista = (ArrayList<Mascota>) data.listar();
@@ -246,6 +311,26 @@ public class MascotasView extends javax.swing.JPanel {
             object[5] = l.get(i).getColorPelaje();
             object[6] = l.get(i).getNacimiento();
             object[7] = l.get(i).getDueño();
+            modelo.addRow(object);
+        }
+        tablaMascotas.setModel(modelo);
+    }
+
+        public void listarPorCliente(JTable tabla, Cliente cliente) {
+        modelo.setRowCount(0);
+        modelo = (DefaultTableModel) tabla.getModel();
+        lista = (ArrayList<Mascota>) data.listarDepCliente(cliente);
+        Object[] object = new Object[8];
+
+        for (int i = 0; i < lista.size(); i++) {
+            object[0] = lista.get(i).getCodigo();
+            object[1] = lista.get(i).getAlias();
+            object[2] = lista.get(i).getSexo();
+            object[3] = lista.get(i).getEspecie();
+            object[4] = lista.get(i).getRaza();
+            object[5] = lista.get(i).getColorPelaje();
+            object[6] = lista.get(i).getNacimiento();
+            object[7] = lista.get(i).getDueño();
             modelo.addRow(object);
         }
         tablaMascotas.setModel(modelo);
@@ -293,7 +378,7 @@ public class MascotasView extends javax.swing.JPanel {
         }
         //------------------
     }
-    
+
     public void filtrar() {
         String filtro = txtBuscar.getText();
 
@@ -316,10 +401,14 @@ public class MascotasView extends javax.swing.JPanel {
     private javax.swing.JPanel backgroundInsert;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnNewMascota;
+    private javax.swing.JComboBox<Cliente> comboFiltro;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelSubMenuFiltrarPor;
     protected static javax.swing.JTable tablaMascotas;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

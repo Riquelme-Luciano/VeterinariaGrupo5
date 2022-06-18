@@ -1,9 +1,7 @@
-
 package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-
 
 public class MenuView extends javax.swing.JFrame {
 
@@ -31,6 +29,9 @@ public class MenuView extends javax.swing.JFrame {
         btnTratamiento = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lblCliente2 = new javax.swing.JLabel();
+        btnVisitas = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        lblCliente3 = new javax.swing.JLabel();
 
         jMenu3.setText("jMenu3");
 
@@ -164,7 +165,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCliente1)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         btnMascotasLayout.setVerticalGroup(
             btnMascotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,6 +222,45 @@ public class MenuView extends javax.swing.JFrame {
 
         panelBtnes.add(btnTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 230, 40));
 
+        btnVisitas.setBackground(new java.awt.Color(11, 95, 93));
+        btnVisitas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVisitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVisitasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVisitasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVisitasMouseExited(evt);
+            }
+        });
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/visitaLogo.png"))); // NOI18N
+
+        lblCliente3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblCliente3.setForeground(new java.awt.Color(255, 255, 255));
+        lblCliente3.setText("Visitas");
+
+        javax.swing.GroupLayout btnVisitasLayout = new javax.swing.GroupLayout(btnVisitas);
+        btnVisitas.setLayout(btnVisitasLayout);
+        btnVisitasLayout.setHorizontalGroup(
+            btnVisitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnVisitasLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCliente3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+        btnVisitasLayout.setVerticalGroup(
+            btnVisitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblCliente3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        panelBtnes.add(btnVisitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 230, 40));
+
         panelPrincipal.add(panelBtnes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -238,10 +278,10 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
-        ClientesView v = new ClientesView();
-        v.setSize(800,500);
-        v.setLocation(0,0);
-        
+        ClientesView2 v = new ClientesView2();
+        v.setSize(800, 500);
+        v.setLocation(0, 0);
+
         this.background.removeAll();//limpia el contenedor
         this.background.add(v, BorderLayout.CENTER);
         this.background.revalidate();
@@ -249,26 +289,26 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteMouseClicked
 
     private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
-        btnCliente.setBackground(new Color(11,113,81));
+        btnCliente.setBackground(new Color(11, 113, 81));
     }//GEN-LAST:event_btnClienteMouseEntered
 
     private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
-        btnCliente.setBackground(new Color(11,95,93));
+        btnCliente.setBackground(new Color(11, 95, 93));
     }//GEN-LAST:event_btnClienteMouseExited
 
     private void btnClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMousePressed
-        
+
     }//GEN-LAST:event_btnClienteMousePressed
 
     private void btnClienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseReleased
-    
+
     }//GEN-LAST:event_btnClienteMouseReleased
 
     private void btnMascotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMascotasMouseClicked
         MascotasView v = new MascotasView();
-        v.setSize(800,500);
-        v.setLocation(0,0);
-        
+        v.setSize(800, 500);
+        v.setLocation(0, 0);
+
         this.background.removeAll();//limpia el contenedor
         this.background.add(v, BorderLayout.CENTER);
         this.background.revalidate();
@@ -276,11 +316,11 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMascotasMouseClicked
 
     private void btnMascotasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMascotasMouseEntered
-        btnMascotas.setBackground(new Color(11,113,81));
+        btnMascotas.setBackground(new Color(11, 113, 81));
     }//GEN-LAST:event_btnMascotasMouseEntered
 
     private void btnMascotasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMascotasMouseExited
-        btnMascotas.setBackground(new Color(11,95,93));
+        btnMascotas.setBackground(new Color(11, 95, 93));
     }//GEN-LAST:event_btnMascotasMouseExited
 
     private void btnMascotasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMascotasMousePressed
@@ -293,9 +333,9 @@ public class MenuView extends javax.swing.JFrame {
 
     private void btnTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTratamientoMouseClicked
         TratamientoView v = new TratamientoView();
-        v.setSize(800,500);
-        v.setLocation(0,0);
-        
+        v.setSize(800, 500);
+        v.setLocation(0, 0);
+
         this.background.removeAll();//limpia el contenedor
         this.background.add(v, BorderLayout.CENTER);
         this.background.revalidate();
@@ -303,11 +343,11 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTratamientoMouseClicked
 
     private void btnTratamientoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTratamientoMouseEntered
-        btnTratamiento.setBackground(new Color(11,113,81));
+        btnTratamiento.setBackground(new Color(11, 113, 81));
     }//GEN-LAST:event_btnTratamientoMouseEntered
 
     private void btnTratamientoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTratamientoMouseExited
-        btnTratamiento.setBackground(new Color(11,95,93));
+        btnTratamiento.setBackground(new Color(11, 95, 93));
     }//GEN-LAST:event_btnTratamientoMouseExited
 
     private void btnTratamientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTratamientoMousePressed
@@ -318,23 +358,44 @@ public class MenuView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTratamientoMouseReleased
 
-   
+    private void btnVisitasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVisitasMouseEntered
+        btnVisitas.setBackground(new Color(11, 113, 81));
+    }//GEN-LAST:event_btnVisitasMouseEntered
+
+    private void btnVisitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVisitasMouseExited
+        btnVisitas.setBackground(new Color(11, 95, 93));
+    }//GEN-LAST:event_btnVisitasMouseExited
+
+    private void btnVisitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVisitasMouseClicked
+        VisitaView v = new VisitaView();
+        v.setSize(800, 500);
+        v.setLocation(0, 0);
+
+        this.background.removeAll();//limpia el contenedor
+        this.background.add(v, BorderLayout.CENTER);
+        this.background.revalidate();
+        this.background.repaint();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisitasMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel background;
+    protected static javax.swing.JPanel background;
     private javax.swing.JPanel btnCliente;
     private javax.swing.JPanel btnMascotas;
     private javax.swing.JPanel btnTratamiento;
+    private javax.swing.JPanel btnVisitas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblCliente1;
     private javax.swing.JLabel lblCliente2;
+    private javax.swing.JLabel lblCliente3;
     private javax.swing.JPanel panelBtnes;
     private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables

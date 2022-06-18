@@ -11,6 +11,7 @@ public class Visita {
     private double pesoMedido;
     private double cobro;
     private String detalle;
+    private String formaPago;
     
     public Visita() {
     }
@@ -89,6 +90,14 @@ public class Visita {
     public void setDetalle(String detalle) {
         this.detalle = detalle;
     }
+
+    public String getFormaPago() {
+        return formaPago;
+    }
+
+    public void setFormaPago(String formaPago) {
+        this.formaPago = formaPago;
+    }    
 
     @Override
     public String toString() {
