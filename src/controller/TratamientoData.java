@@ -126,4 +126,29 @@ public class TratamientoData {
 
         return tipos;
     }
+
+    public Tratamiento buscarTratamiento(int id) {
+        Tratamiento t = new Tratamiento();
+        String sql = "SELECT * FROM tratamiento WHERE id=?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                t.setIdTratamiento(rs.getInt(1));
+                t.setTipo(rs.getString(2));
+                t.setDescripcion(rs.getString(3));
+                t.setMedicamento(rs.getString(4));
+                t.setImporte(rs.getDouble(5));
+                t.setActivo(rs.getBoolean(6));
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error de conexion con base de datos en buscar Tratamiento" + ex);
+        }
+        return t;
+    }
 }

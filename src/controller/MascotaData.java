@@ -113,4 +113,96 @@ public class MascotaData {
 
         return datos;
     }
+
+    public List listarDepCliente(Cliente cl) {
+        List<Mascota> datos = new ArrayList<>();
+        String instruccion = "SELECT * FROM mascota WHERE activo=1 AND documentoCliente=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setLong(1, cl.getDni());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Mascota m = new Mascota();
+                m.setCodigo(rs.getInt(1));
+                m.setAlias(rs.getString(2));
+                m.setSexo(rs.getString(3).charAt(0));
+                m.setEspecie(Mascota.validarTipoMascota(rs.getString(4)));
+                m.setRaza(rs.getString(5));
+                m.setColorPelaje(rs.getString(6));
+
+                m.setNacimiento(rs.getDate(7));
+
+                m.setCliente(dataCliente.buscarCliente(rs.getInt(8)));
+                m.setActivo(rs.getBoolean(9));
+                datos.add(m);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar mascotas " + e);
+        }
+
+        return datos;
+    }
+
+    public Mascota buscarMascota(int codigo) {
+        Mascota m = new Mascota();
+        String sql = "SELECT * FROM mascota WHERE codigo=?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql); 
+            ps.setInt(1, codigo);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                m.setCodigo(rs.getInt(1));
+                m.setAlias(rs.getString(2));
+                m.setSexo(rs.getString(3).charAt(0));
+                m.setEspecie(Mascota.validarTipoMascota(rs.getString(4)));
+                m.setRaza(rs.getString(5));
+                m.setColorPelaje(rs.getString(6));
+                m.setNacimiento(rs.getDate(7));
+                m.setCliente(dataCliente.buscarCliente(rs.getInt(8)));
+                m.setActivo(rs.getBoolean(9));
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error de conexion con base de datos en buscar Mascota" + ex);
+        }
+        return m;
+    }
+    
+    public int ultimoPesoMedido(Mascota mascota){
+        int peso=0;
+        String instruccion = "SELECT pesoMedido FROM visita WHERE idMascota=? ORDER BY idVisita DESC LIMIT 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setInt(1, mascota.getCodigo());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                peso = rs.getInt("pesoMedido");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al querer obtener el peso de la mascota" + e);
+        }
+        return peso;
+    }
+    
+    public int pesoPromedio(Mascota mascota){
+        int pesoPromedio=0;
+        int contador=0;
+        String instruccion = "SELECT pesoMedido FROM visita WHERE idMascota=? ORDER BY idVisita DESC LIMIT 10";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setInt(1, mascota.getCodigo());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                pesoPromedio += rs.getInt("pesoMedido");
+                contador++;
+            }
+            pesoPromedio/=contador;
+        } catch (SQLException e) {
+            System.out.println("Error al querer obtener el peso de la mascota" + e);
+        }
+        return pesoPromedio;
+    }
 }

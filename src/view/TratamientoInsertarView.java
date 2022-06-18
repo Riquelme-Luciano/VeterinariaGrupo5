@@ -72,12 +72,10 @@ public class TratamientoInsertarView extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         background.setBackground(new java.awt.Color(11, 95, 93));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDoc.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         lblDoc.setForeground(new java.awt.Color(255, 255, 255));
         lblDoc.setText("Importe");
-        background.add(lblDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
         txtAreaDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaDescripcion.setColumns(1);
@@ -86,30 +84,23 @@ public class TratamientoInsertarView extends javax.swing.JPanel {
         txtAreaDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtAreaDescripcion);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 340, 240));
-
         lblDoc2.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         lblDoc2.setForeground(new java.awt.Color(255, 255, 255));
         lblDoc2.setText("Medicamento");
-        background.add(lblDoc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         comboTipoTratamiento.setBackground(new java.awt.Color(255, 255, 255));
         comboTipoTratamiento.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        background.add(comboTipoTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 280, 40));
 
         comboMedicamento.setBackground(new java.awt.Color(255, 255, 255));
         comboMedicamento.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        background.add(comboMedicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 280, 40));
 
         txtImporte.setBackground(new java.awt.Color(255, 255, 255));
         txtImporte.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         txtImporte.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(txtImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 170, 40));
 
         lblDoc3.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         lblDoc3.setForeground(new java.awt.Color(255, 255, 255));
         lblDoc3.setText("Descripcion:");
-        background.add(lblDoc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         btnAgregarMedicamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addIcon.png"))); // NOI18N
         btnAgregarMedicamento.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -117,7 +108,6 @@ public class TratamientoInsertarView extends javax.swing.JPanel {
                 btnAgregarMedicamentoMouseClicked(evt);
             }
         });
-        background.add(btnAgregarMedicamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
 
         btnAgregarTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addIcon.png"))); // NOI18N
         btnAgregarTipo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,7 +115,6 @@ public class TratamientoInsertarView extends javax.swing.JPanel {
                 btnAgregarTipoMouseClicked(evt);
             }
         });
-        background.add(btnAgregarTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
 
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-rellena.png"))); // NOI18N
         btnAtras.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,7 +122,6 @@ public class TratamientoInsertarView extends javax.swing.JPanel {
                 btnAtrasMouseClicked(evt);
             }
         });
-        background.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 13, 50, 30));
 
         btnActualizar.setBackground(new java.awt.Color(0, 156, 91));
         btnActualizar.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
@@ -146,7 +134,6 @@ public class TratamientoInsertarView extends javax.swing.JPanel {
                 btnActualizarActionPerformed(evt);
             }
         });
-        background.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 180, 40));
 
         btnGuardar.setBackground(new java.awt.Color(0, 153, 51));
         btnGuardar.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
@@ -159,17 +146,84 @@ public class TratamientoInsertarView extends javax.swing.JPanel {
                 btnGuardarActionPerformed(evt);
             }
         });
-        background.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 180, 40));
 
         lblDoc4.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         lblDoc4.setForeground(new java.awt.Color(255, 255, 255));
         lblDoc4.setText("Tipo");
-        background.add(lblDoc4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         txtID.setEditable(false);
         txtID.setBackground(new java.awt.Color(255, 255, 255));
         txtID.setPreferredSize(new java.awt.Dimension(100, 22));
-        background.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, -1, -1));
+
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(610, 610, 610)
+                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lblDoc4)
+                .addGap(351, 351, 351)
+                .addComponent(lblDoc3))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboTipoTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDoc2)
+                    .addComponent(comboMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDoc)
+                    .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregarTipo)
+                    .addComponent(btnAgregarMedicamento))
+                .addGap(72, 72, 72)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDoc4)
+                    .addComponent(lblDoc3))
+                .addGap(1, 1, 1)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addComponent(comboTipoTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(lblDoc2)
+                        .addGap(1, 1, 1)
+                        .addComponent(comboMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(lblDoc)
+                        .addGap(1, 1, 1)
+                        .addComponent(txtImporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(backgroundLayout.createSequentialGroup()
+                        .addComponent(btnAgregarTipo)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnAgregarMedicamento))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(90, 90, 90)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
     }// </editor-fold>//GEN-END:initComponents
@@ -269,7 +323,7 @@ public class TratamientoInsertarView extends javax.swing.JPanel {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel background;
+    protected static javax.swing.JPanel background;
     protected static javax.swing.JButton btnActualizar;
     private javax.swing.JLabel btnAgregarMedicamento;
     private javax.swing.JLabel btnAgregarTipo;

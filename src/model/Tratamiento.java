@@ -79,7 +79,7 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return idTratamiento + ", tipo=" + tipo + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", importe=" + importe + ", activo=" + activo;
+        return tipo + " - " + medicamento;
     }
     
     

@@ -69,6 +69,18 @@ public class ClienteData {
         }
     }
 
+    public void eliminarClienteSinMascota(int documento){
+        String instruccion = "UPDATE cliente SET activo=0 WHERE documento=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setInt(1, documento);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("Error al querer eliminar cliente en data" + e);
+        }
+    }
+    
     public List listar() {
         
         List<Cliente> datos = new ArrayList<>();
