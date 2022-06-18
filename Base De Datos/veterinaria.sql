@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2022 a las 00:53:28
+-- Tiempo de generación: 18-06-2022 a las 04:16:36
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -46,14 +46,16 @@ INSERT INTO `cliente` (`documento`, `nombre`, `apellido`, `telefono`, `direccion
 (11032123, 'Carlos', 'Gimenez', 3123212, 'Av España', 'Susana', 0),
 (12032123, 'Olga', 'Gimenez', 312321, 'Av Libertador', 'Pedro', 1),
 (16200332, 'Geronimo', 'Maldonado', 567431, '25 de Mayo', 'Liliana', 0),
-(19200332, 'Julio', 'Veliz', 4423433, 'Gral Roca', 'Sabrina', 1),
+(19200332, 'Julio', 'Veliz', 4423433, 'Gral Roca', 'Sabrina', 0),
 (20200332, 'Lucas', 'Salasa', 683641, 'Sargento Cabral', 'Santiago', 0),
 (21233454, 'Daniela', 'Nuñezx', 23212342, 'La Rotonda', 'Carlos', 1),
 (23124567, 'Santigo', 'Perez', 3544231, 'San Martin', 'Eduardo', 1),
 (38920123, 'Roque', 'Barros', 3544231, 'San Martin', 'Julieta', 1),
 (40200332, 'Nicolas', 'Salas', 980641, '25 de Mayo', 'Rosa', 1),
 (47497200, 'Daniel', 'Barros', 3444232, 'San Martin', 'Matias', 1),
-(49200332, 'Jose', 'Messi', 312321, 'Belgrano 219', 'Lionel', 1);
+(48920123, 'Daniel', 'Ocano', 431232, 'dsads', 'Sergio', 1),
+(49200332, 'Jose', 'Messi', 312321, 'Belgrano 219', 'Lionel', 0),
+(54321454, 'Luis', 'Salas', 343212, 'San Martin 222', 'Matias', 0);
 
 -- --------------------------------------------------------
 
@@ -83,11 +85,12 @@ INSERT INTO `mascota` (`codigo`, `alias`, `sexo`, `especie`, `raza`, `color`, `n
 (4, 'Black', 'M', 'Perro', 'Doberman', 'Negro', '2020-06-19', 20200332, 0),
 (5, 'Oli', 'H', 'Perro', 'Nose', 'Negro', '2021-06-12', 12032123, 1),
 (6, 'Flaca', 'H', 'Perro', '', 'Blanco', '2019-06-08', 49200332, 0),
-(7, 'Cejas', 'M', 'Perro', 'Pitbull', 'Gris', '2020-06-19', 19200332, 1),
+(7, 'Cejas', 'M', 'Perro', 'Pitbull', 'Gris', '2020-06-19', 19200332, 0),
 (8, 'Roco', 'M', 'Perro', 'Caniche', 'Gris', '2021-06-05', 23124567, 1),
 (9, 'Gorda', 'H', 'Perro', 'Chihuahua', 'Marron', '2011-06-01', 47497200, 1),
 (10, 'Floki', 'M', 'Perro', 'Batato', 'Tricolor', '2017-06-16', 16200332, 0),
-(11, 'Locona', 'H', 'Loro', 'Cotorra', 'Negro', '2019-06-15', 11032123, 0);
+(11, 'Locona', 'H', 'Loro', 'Cotorra', 'Negro', '2019-06-15', 11032123, 0),
+(12, 'Roque', 'M', 'Perro', 'Beagle', 'Tricolor', '2019-06-14', 47497200, 1);
 
 -- --------------------------------------------------------
 
@@ -113,7 +116,8 @@ INSERT INTO `tratamiento` (`id`, `tipo`, `descripcion`, `medicamento`, `importe`
 (2, 'Vacunación', 'Otra vacunacion mas', 'dasdde', 3000, 0),
 (3, 'Vacunación', 'Otro para borrar', 'vac-20PB12', 2500, 0),
 (4, 'Desparacitacion', 'Desaparacitacion con medicamento especializado', 'VAC-99PRANTI', 5000, 1),
-(5, 'Operacion', 'Operacion de una pata', 'Analgesico 221321', 7000, 1);
+(5, 'Operacion', 'Operacion de una pata', 'Analgesico 221321', 7000, 1),
+(6, 'Vacunación', 'Vacuna contra la rabia 3.0', 'vac-sinorabica', 9000, 1);
 
 -- --------------------------------------------------------
 
@@ -126,9 +130,37 @@ CREATE TABLE `visita` (
   `idMascota` int(11) NOT NULL,
   `idTratamiento` int(11) NOT NULL,
   `fecha` date NOT NULL,
-  `detalle` varchar(45) NOT NULL,
-  `pesoMedido` double NOT NULL
+  `detalle` varchar(200) NOT NULL,
+  `pesoMedido` double NOT NULL,
+  `formaPago` varchar(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `visita`
+--
+
+INSERT INTO `visita` (`idVisita`, `idMascota`, `idTratamiento`, `fecha`, `detalle`, `pesoMedido`, `formaPago`) VALUES
+(1, 7, 1, '2022-06-14', 'Acudio para la vacunacion anual de rabia', 20, NULL),
+(2, 8, 4, '2022-06-14', 'Acudio por dolores estomacales, se descubrieron \nparasitos, se procedio a desparasitar', 25, NULL),
+(3, 9, 1, '2022-06-14', 'Vacunacion habitual', 25, NULL),
+(36, 5, 1, '2022-06-15', 'Detalles que son mas que detalles', 22, NULL),
+(40, 12, 4, '2022-06-15', 'Muchos detalles para hablar', 32, NULL),
+(55, 7, 6, '2022-06-15', 'Muchos por dar', 31, NULL),
+(61, 7, 4, '2022-06-15', 'Muchos detalles que dar', 32, NULL),
+(62, 7, 1, '2022-06-16', '', 33, NULL),
+(63, 7, 4, '2022-06-16', '', 36, NULL),
+(64, 7, 6, '2022-06-16', '', 22, NULL),
+(65, 7, 4, '2022-06-16', '', 55, NULL),
+(66, 7, 4, '2022-06-16', '', 24, NULL),
+(67, 7, 4, '2022-06-16', '', 30, NULL),
+(68, 7, 1, '2022-06-16', '', 26, NULL),
+(69, 7, 4, '2022-06-16', '', 31, NULL),
+(70, 8, 4, '2022-06-17', 'Desparacitacion para la proxima operacion', 28, NULL),
+(71, 5, 4, '2022-06-17', 'Dale con los detalles vos', 33, 'Efectivo'),
+(72, 8, 1, '2022-06-17', 'Detalles para dar hay muchos', 22, 'Tarjeta Debito'),
+(73, 12, 6, '2022-06-17', 'La vacuna para que coso', 40, 'Tarjeta Credito'),
+(74, 5, 1, '2022-06-17', '', 12, 'Efectivo'),
+(75, 5, 1, '2022-06-17', '', 32, 'Efectivo');
 
 --
 -- Índices para tablas volcadas
@@ -172,19 +204,19 @@ ALTER TABLE `visita`
 -- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamiento`
 --
 ALTER TABLE `tratamiento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `visita`
 --
 ALTER TABLE `visita`
-  MODIFY `idVisita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idVisita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- Restricciones para tablas volcadas
