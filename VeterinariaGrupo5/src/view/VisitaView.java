@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.Conexion;
 import model.Mascota;
@@ -50,15 +51,15 @@ public class VisitaView extends javax.swing.JPanel {
         comboFiltroMascotas = new javax.swing.JComboBox<>();
         comboFiltroTratamientos = new javax.swing.JComboBox<>();
         comboFiltro = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVisitas = new javax.swing.JTable();
         btnEliminarVisita = new javax.swing.JButton();
         btnNewVisita = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        contLupa = new javax.swing.JPanel();
+        lupa = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         backgroundInsert = new javax.swing.JPanel();
         backgroundDetalles = new javax.swing.JPanel();
 
@@ -73,18 +74,23 @@ public class VisitaView extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setMaximumSize(new java.awt.Dimension(970, 620));
+        setMinimumSize(new java.awt.Dimension(970, 620));
+        setPreferredSize(new java.awt.Dimension(970, 620));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        background.setBackground(new java.awt.Color(11, 95, 93));
+        background.setBackground(new java.awt.Color(228, 249, 245));
+        background.setMaximumSize(new java.awt.Dimension(970, 620));
+        background.setMinimumSize(new java.awt.Dimension(970, 620));
+        background.setPreferredSize(new java.awt.Dimension(970, 620));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelSubMenuFiltrarPor.setBackground(new java.awt.Color(102, 0, 102));
+        panelSubMenuFiltrarPor.setBackground(new java.awt.Color(17, 153, 158));
 
-        panelElegirFiltroCombo.setBackground(new java.awt.Color(102, 0, 102));
+        panelElegirFiltroCombo.setBackground(new java.awt.Color(17, 153, 158));
         panelElegirFiltroCombo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        comboFiltroMascotas.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         comboFiltroMascotas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboFiltroMascotasItemStateChanged(evt);
@@ -99,6 +105,7 @@ public class VisitaView extends javax.swing.JPanel {
         });
         panelElegirFiltroCombo.add(comboFiltroTratamientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, -1));
 
+        comboFiltro.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Mascota", "Tratamiento" }));
         comboFiltro.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -128,49 +135,9 @@ public class VisitaView extends javax.swing.JPanel {
 
         background.add(panelSubMenuFiltrarPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 190, 110));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(614, 12, -1, -1));
-
-        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        txtBuscar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        txtBuscar.setBorder(null);
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
-            }
-        });
-        background.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 12, 130, 25));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Visitas");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 130, -1));
-
+        tablaVisitas.setBackground(new java.awt.Color(228, 249, 245));
+        tablaVisitas.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+        tablaVisitas.setForeground(new java.awt.Color(64, 81, 78));
         tablaVisitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -187,11 +154,34 @@ public class VisitaView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaVisitas.setFocusable(false);
+        tablaVisitas.setGridColor(new java.awt.Color(48, 227, 202));
+        tablaVisitas.setSelectionBackground(new java.awt.Color(228, 249, 245));
+        tablaVisitas.setSelectionForeground(new java.awt.Color(17, 153, 158));
+        tablaVisitas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        //lineas horizontales
+        tablaVisitas.setShowHorizontalLines(false);
+
+        //modificaciones header
+        tablaVisitas.getTableHeader().setFont(new java.awt.Font("Roboto Medium", 0, 22));
+        tablaVisitas.getTableHeader().setBackground(new java.awt.Color(48, 227, 202));
+        tablaVisitas.getTableHeader().setForeground(new java.awt.Color(64, 81, 78));
+
+        //alinear al centro los datos
+        javax.swing.table.DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+        tcr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        for(int i=0;i<9;i++){
+            tablaVisitas.getColumnModel().getColumn(i).setCellRenderer(tcr);
+        }
+
+        //color fondo
+        tablaVisitas.setFillsViewportHeight(true);
+        tablaVisitas.setBackground(new java.awt.Color(228, 249, 245));
         jScrollPane1.setViewportView(tablaVisitas);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 760, 320));
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 930, 460));
 
-        btnEliminarVisita.setBackground(new java.awt.Color(204, 0, 0));
+        btnEliminarVisita.setBackground(new java.awt.Color(249, 76, 102));
         btnEliminarVisita.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnEliminarVisita.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarVisita.setText("Eliminar");
@@ -201,9 +191,9 @@ public class VisitaView extends javax.swing.JPanel {
                 btnEliminarVisitaActionPerformed(evt);
             }
         });
-        background.add(btnEliminarVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 430, 180, 40));
+        background.add(btnEliminarVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, 170, 40));
 
-        btnNewVisita.setBackground(new java.awt.Color(0, 153, 51));
+        btnNewVisita.setBackground(new java.awt.Color(31, 171, 137));
         btnNewVisita.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnNewVisita.setForeground(new java.awt.Color(255, 255, 255));
         btnNewVisita.setText("Nueva");
@@ -213,9 +203,10 @@ public class VisitaView extends javax.swing.JPanel {
                 btnNewVisitaActionPerformed(evt);
             }
         });
-        background.add(btnNewVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 180, 40));
+        background.add(btnNewVisita, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 550, 170, 40));
 
-        jButton1.setBackground(new java.awt.Color(102, 0, 102));
+        jButton1.setBackground(new java.awt.Color(17, 153, 158));
+        jButton1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Filtrar por");
         jButton1.setBorder(null);
@@ -226,40 +217,76 @@ public class VisitaView extends javax.swing.JPanel {
         });
         background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 30));
 
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        txtBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(64, 81, 78));
+        txtBuscar.setBorder(null);
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+        background.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 210, 30));
+
+        contLupa.setBackground(new java.awt.Color(255, 255, 255));
+
+        lupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
+
+        javax.swing.GroupLayout contLupaLayout = new javax.swing.GroupLayout(contLupa);
+        contLupa.setLayout(contLupaLayout);
+        contLupaLayout.setHorizontalGroup(
+            contLupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contLupaLayout.createSequentialGroup()
+                .addComponent(lupa, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+        contLupaLayout.setVerticalGroup(
+            contLupaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contLupaLayout.createSequentialGroup()
+                .addComponent(lupa)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        background.add(contLupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 40, 30));
+
+        jLabel2.setBackground(new java.awt.Color(17, 153, 158));
+        jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(64, 81, 78));
+        jLabel2.setText("Visitas");
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 240, -1));
+
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 620));
 
         backgroundInsert.setBackground(new java.awt.Color(255, 51, 0));
+        backgroundInsert.setMaximumSize(new java.awt.Dimension(970, 620));
+        backgroundInsert.setMinimumSize(new java.awt.Dimension(970, 620));
 
         javax.swing.GroupLayout backgroundInsertLayout = new javax.swing.GroupLayout(backgroundInsert);
         backgroundInsert.setLayout(backgroundInsertLayout);
         backgroundInsertLayout.setHorizontalGroup(
             backgroundInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         backgroundInsertLayout.setVerticalGroup(
             backgroundInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        add(backgroundInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        add(backgroundInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 620));
 
         javax.swing.GroupLayout backgroundDetallesLayout = new javax.swing.GroupLayout(backgroundDetalles);
         backgroundDetalles.setLayout(backgroundDetallesLayout);
         backgroundDetallesLayout.setHorizontalGroup(
             backgroundDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 970, Short.MAX_VALUE)
         );
         backgroundDetallesLayout.setVerticalGroup(
             backgroundDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
 
-        add(backgroundDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        add(backgroundDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 620));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-        filtrar();
-    }//GEN-LAST:event_txtBuscarKeyReleased
 
     public void filtrar() {
         String filtro = txtBuscar.getText();
@@ -301,7 +328,7 @@ public class VisitaView extends javax.swing.JPanel {
 
     private void btnNewVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewVisitaActionPerformed
         VisitaInsertarView v = new VisitaInsertarView();
-        v.setSize(800, 500);
+        v.setSize(970, 620);
         v.setLocation(0, 0);
 
         //this.background.removeAll();//limpia el contenedor
@@ -360,6 +387,11 @@ public class VisitaView extends javax.swing.JPanel {
             listarPorTratamiento(tablaVisitas, tratamientoFiltro);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_comboFiltroTratamientosItemStateChanged
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        comboFiltro.setSelectedIndex(0);
+        filtrar();
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
     public void llenarComboFiltroMascotas() {
         comboFiltroMascotas.removeAllItems();
@@ -469,12 +501,12 @@ public class VisitaView extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> comboFiltro;
     private javax.swing.JComboBox<Mascota> comboFiltroMascotas;
     private javax.swing.JComboBox<Tratamiento> comboFiltroTratamientos;
+    private javax.swing.JPanel contLupa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lupa;
     private javax.swing.JPanel panelElegirFiltroCombo;
     private javax.swing.JPanel panelSubMenuFiltrarPor;
     protected static javax.swing.JTable tablaVisitas;
