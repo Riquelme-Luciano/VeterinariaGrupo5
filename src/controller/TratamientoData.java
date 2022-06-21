@@ -87,7 +87,7 @@ public class TratamientoData {
                 datos.add(tr);
             }
         } catch (SQLException e) {
-            System.out.println("Error al listar mascotas\n" + e);
+            System.out.println("Error al listar tratamientos\n" + e);
         }
 
         return datos;
@@ -150,5 +150,44 @@ public class TratamientoData {
             System.out.println("Error de conexion con base de datos en buscar Tratamiento" + ex);
         }
         return t;
+    }
+
+    public int activarTratamiento(int id) {
+        String instruccion = "UPDATE tratamiento SET activo=true WHERE id=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setLong(1, id);
+
+            ps.executeUpdate();
+            return 1;
+        } catch (Exception e) {
+            System.out.println("Error al querer activar tratamiento en data" + e);
+            return 0;
+        }
+    }
+    
+        public List listarEliminados() {
+        List<Tratamiento> datos = new ArrayList();
+        String sql = "SELECT * FROM tratamiento WHERE activo=0";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Tratamiento tr = new Tratamiento();
+                tr.setIdTratamiento(rs.getInt(1));
+                tr.setTipo(rs.getString(2));
+                tr.setDescripcion(rs.getString(3));
+                tr.setMedicamento(rs.getString(4));
+                tr.setImporte(rs.getDouble(5));
+                tr.setActivo(rs.getBoolean(6));
+
+                datos.add(tr);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al listar tratamientos\n" + e);
+        }
+
+        return datos;
     }
 }

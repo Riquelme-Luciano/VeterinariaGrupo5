@@ -90,6 +90,12 @@ public class MascotaInsertarView extends javax.swing.JPanel {
         comboEspecies = new javax.swing.JComboBox<>();
         txtAlias = new javax.swing.JTextField();
         lblAtras = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        asterisco3 = new javax.swing.JLabel();
+        asterisco4 = new javax.swing.JLabel();
+        asterisco5 = new javax.swing.JLabel();
+        asterisco6 = new javax.swing.JLabel();
+        asterisco7 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -98,207 +104,317 @@ public class MascotaInsertarView extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jList1);
 
-        setBackground(new java.awt.Color(11, 95, 93));
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setBackground(new java.awt.Color(228, 249, 245));
+        setMaximumSize(new java.awt.Dimension(970, 620));
+        setMinimumSize(new java.awt.Dimension(970, 620));
+        setPreferredSize(new java.awt.Dimension(970, 620));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnGuardar.setBackground(new java.awt.Color(0, 153, 51));
-        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnGuardar.setBackground(new java.awt.Color(31, 171, 137));
+        btnGuardar.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Insertar");
         btnGuardar.setBorder(null);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.setFocusable(false);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 120, 40));
+        add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 150, 50));
 
-        btnActualizar.setBackground(new java.awt.Color(0, 156, 91));
-        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnActualizar.setBackground(new java.awt.Color(98, 210, 162));
+        btnActualizar.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("Actualizar");
         btnActualizar.setBorder(null);
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setFocusable(false);
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
             }
         });
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 120, 40));
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 500, 150, 50));
 
         txtCodigo.setEditable(false);
         txtCodigo.setBackground(new java.awt.Color(255, 255, 255));
-        txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtCodigo.setForeground(new java.awt.Color(0, 0, 0));
+        txtCodigo.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        txtCodigo.setForeground(new java.awt.Color(60, 63, 65));
+        txtCodigo.setToolTipText("");
         txtCodigo.setBorder(null);
-        add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 90, -1));
+        txtCodigo.setFocusable(false);
+        txtCodigo.setVisible(false);
+        add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 90, -1));
 
         txtColor.setBackground(new java.awt.Color(255, 255, 255));
-        txtColor.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtColor.setForeground(new java.awt.Color(0, 0, 0));
+        txtColor.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        txtColor.setForeground(new java.awt.Color(60, 63, 65));
+        txtColor.setToolTipText("");
         txtColor.setBorder(null);
-        add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 283, -1));
+        txtColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtColorKeyTyped(evt);
+            }
+        });
+        add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 283, 40));
 
         txtRaza.setBackground(new java.awt.Color(255, 255, 255));
-        txtRaza.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtRaza.setForeground(new java.awt.Color(0, 0, 0));
+        txtRaza.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        txtRaza.setForeground(new java.awt.Color(60, 63, 65));
+        txtRaza.setToolTipText("");
         txtRaza.setBorder(null);
-        add(txtRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 283, -1));
+        txtRaza.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRazaKeyTyped(evt);
+            }
+        });
+        add(txtRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 283, 40));
 
-        lblDoc1.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        lblDoc1.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoc1.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        lblDoc1.setForeground(new java.awt.Color(60, 63, 65));
         lblDoc1.setText("Sexo:");
-        add(lblDoc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, -1, -1));
+        lblDoc1.setToolTipText("");
+        add(lblDoc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, -1));
 
-        lblDoc2.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        lblDoc2.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoc2.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        lblDoc2.setForeground(new java.awt.Color(60, 63, 65));
         lblDoc2.setText("Especie:");
-        add(lblDoc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, -1, -1));
+        lblDoc2.setToolTipText("");
+        add(lblDoc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, -1, -1));
 
-        lblDoc.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        lblDoc.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoc.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        lblDoc.setForeground(new java.awt.Color(60, 63, 65));
         lblDoc.setText("Alias");
-        add(lblDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+        lblDoc.setToolTipText("");
+        add(lblDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
 
-        lblDoc3.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        lblDoc3.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoc3.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        lblDoc3.setForeground(new java.awt.Color(60, 63, 65));
         lblDoc3.setText("Raza:");
-        add(lblDoc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
+        lblDoc3.setToolTipText("");
+        add(lblDoc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
 
-        lblDoc5.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        lblDoc5.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoc5.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        lblDoc5.setForeground(new java.awt.Color(60, 63, 65));
         lblDoc5.setText("Color:");
-        add(lblDoc5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+        lblDoc5.setToolTipText("");
+        add(lblDoc5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
-        lblDoc4.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        lblDoc4.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoc4.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        lblDoc4.setForeground(new java.awt.Color(60, 63, 65));
         lblDoc4.setText("Nacimiento:");
-        add(lblDoc4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, -1, -1));
+        lblDoc4.setToolTipText("");
+        add(lblDoc4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, -1, -1));
 
-        lblDoc6.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
-        lblDoc6.setForeground(new java.awt.Color(255, 255, 255));
+        lblDoc6.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        lblDoc6.setForeground(new java.awt.Color(60, 63, 65));
         lblDoc6.setText("Dueño:");
-        add(lblDoc6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
+        lblDoc6.setToolTipText("");
+        add(lblDoc6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 120, -1));
 
+        rbMacho.setBackground(new java.awt.Color(228, 249, 245));
         btnesSexo.add(rbMacho);
-        rbMacho.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        rbMacho.setForeground(new java.awt.Color(255, 255, 255));
+        rbMacho.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        rbMacho.setForeground(new java.awt.Color(60, 63, 65));
+        rbMacho.setSelected(true);
         rbMacho.setText("Macho");
-        add(rbMacho, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, -1, -1));
+        rbMacho.setToolTipText("");
+        rbMacho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rbMacho.setFocusable(false);
+        add(rbMacho, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, -1, -1));
 
+        rbHembra.setBackground(new java.awt.Color(228, 249, 245));
         btnesSexo.add(rbHembra);
-        rbHembra.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        rbHembra.setForeground(new java.awt.Color(255, 255, 255));
+        rbHembra.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        rbHembra.setForeground(new java.awt.Color(60, 63, 65));
         rbHembra.setText("Hembra");
-        add(rbHembra, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, -1, -1));
+        rbHembra.setToolTipText("");
+        rbHembra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rbHembra.setFocusable(false);
+        add(rbHembra, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
 
         comboDueño.setBackground(new java.awt.Color(255, 255, 255));
-        comboDueño.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        comboDueño.setForeground(new java.awt.Color(0, 0, 0));
+        comboDueño.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        comboDueño.setForeground(new java.awt.Color(60, 63, 65));
         comboDueño.setMaximumRowCount(100);
-        add(comboDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 280, 30));
-        add(calendarNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 280, 30));
+        comboDueño.setToolTipText("");
+        comboDueño.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comboDueño.setFocusable(false);
+        add(comboDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 280, 40));
+
+        calendarNacimiento.setForeground(new java.awt.Color(60, 63, 65));
+        calendarNacimiento.setToolTipText("");
+        calendarNacimiento.setFocusable(false);
+        calendarNacimiento.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        add(calendarNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 283, 40));
 
         comboEspecies.setBackground(new java.awt.Color(255, 255, 255));
-        comboEspecies.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        comboEspecies.setForeground(new java.awt.Color(0, 0, 0));
-        add(comboEspecies, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 280, 30));
+        comboEspecies.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        comboEspecies.setForeground(new java.awt.Color(60, 63, 65));
+        comboEspecies.setToolTipText("");
+        comboEspecies.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        comboEspecies.setFocusable(false);
+        add(comboEspecies, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 283, 40));
 
         txtAlias.setBackground(new java.awt.Color(255, 255, 255));
-        txtAlias.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtAlias.setForeground(new java.awt.Color(0, 0, 0));
+        txtAlias.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        txtAlias.setForeground(new java.awt.Color(60, 63, 65));
+        txtAlias.setToolTipText("");
         txtAlias.setBorder(null);
-        add(txtAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 283, -1));
+        txtAlias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAliasKeyTyped(evt);
+            }
+        });
+        add(txtAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 283, 40));
 
         lblAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-rellena.png"))); // NOI18N
+        lblAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAtras.setFocusable(false);
         lblAtras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAtrasMouseClicked(evt);
             }
         });
         add(lblAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(17, 153, 158));
+        jLabel1.setText("Campos obligatorios *");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, 30));
+
+        asterisco3.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        asterisco3.setForeground(new java.awt.Color(64, 81, 78));
+        asterisco3.setText("*");
+        add(asterisco3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 20, 20));
+
+        asterisco4.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        asterisco4.setForeground(new java.awt.Color(64, 81, 78));
+        asterisco4.setText("*");
+        add(asterisco4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 20, 20));
+
+        asterisco5.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        asterisco5.setForeground(new java.awt.Color(64, 81, 78));
+        asterisco5.setText("*");
+        add(asterisco5, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 20, 20));
+
+        asterisco6.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        asterisco6.setForeground(new java.awt.Color(64, 81, 78));
+        asterisco6.setText("*");
+        add(asterisco6, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 20, 20));
+
+        asterisco7.setFont(new java.awt.Font("Roboto", 1, 26)); // NOI18N
+        asterisco7.setForeground(new java.awt.Color(64, 81, 78));
+        asterisco7.setText("*");
+        add(asterisco7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 20, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        //long codigo = Long.parseLong(txtCodigo.getText());
-        String alias = txtAlias.getText();
-        char sexo = 'X';
-        if (rbMacho.isSelected()) {
-            sexo = 'M';
-        } else if (rbHembra.isSelected()) {
-            sexo = 'H';
-        }
 
-        String especie = comboEspecies.getSelectedItem().toString();
-        String raza = txtRaza.getText();
-        String color = txtColor.getText();
-        Date nacimiento = calendarNacimiento.getDate();
-        Cliente cliente = (Cliente) comboDueño.getSelectedItem();
-        boolean activo = true;
-
-        m.setAlias(alias);
-        m.setSexo(sexo);
-        m.setEspecie(Mascota.validarTipoMascota(especie));
-        m.setRaza(raza);
-        m.setColorPelaje(color);
-        m.setNacimiento(nacimiento);
-        m.setCliente(cliente);
-        m.setActivo(activo);
-
-        System.out.println(m);
-        int r = data.insertarMascota(m);
-
-        if (r == 1) {
-            JOptionPane.showMessageDialog(this, "Mascota agregada");
-            limpiarCampos();
-            listar(MascotasView.tablaMascotas);
+        //validar que rellene campos obligatorios
+        if (validacionesVacias() == 1) {
+            JOptionPane.showMessageDialog(this, "Debe llenar los campos requeridos");
         } else {
-            JOptionPane.showMessageDialog(this, "Error al insertar mascota");
+            //long codigo = Long.parseLong(txtCodigo.getText());
+            String alias = txtAlias.getText();
+            char sexo = 'X';
+            if (rbMacho.isSelected()) {
+                sexo = 'M';
+            } else if (rbHembra.isSelected()) {
+                sexo = 'H';
+            }
+
+            String especie = comboEspecies.getSelectedItem().toString();
+            String raza = txtRaza.getText();
+            String color = txtColor.getText();
+            Date nacimiento = calendarNacimiento.getDate();
+            Cliente cliente = (Cliente) comboDueño.getSelectedItem();
+            boolean activo = true;
+
+            m.setAlias(alias);
+            m.setSexo(sexo);
+            m.setEspecie(Mascota.validarTipoMascota(especie));
+            m.setRaza(raza);
+            m.setColorPelaje(color);
+            m.setNacimiento(nacimiento);
+            m.setCliente(cliente);
+            m.setActivo(activo);
+
+            System.out.println(m);
+            int r = data.insertarMascota(m);
+
+            if (r == 1) {
+                JOptionPane.showMessageDialog(this, "Mascota agregada");
+                limpiarCampos();
+                listar(MascotasView.tablaMascotas);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al insertar mascota");
+            }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        int id = Integer.parseInt(txtCodigo.getText());
-        String alias = txtAlias.getText();
-        char sexo = 'X';
-        if (rbMacho.isSelected()) {
-            sexo = 'M';
-        } else if (rbHembra.isSelected()) {
-            sexo = 'H';
-        }
 
-        String especie = comboEspecies.getSelectedItem().toString();
-        String raza = txtRaza.getText();
-        String color = txtColor.getText();
-        Date nacimiento = calendarNacimiento.getDate();
-        Cliente cliente = (Cliente) comboDueño.getSelectedItem();
-        boolean activo = true;
-        
-        m.setCodigo(id);
-        m.setAlias(alias);
-        m.setSexo(sexo);
-        m.setEspecie(Mascota.validarTipoMascota(especie));
-        m.setRaza(raza);
-        m.setColorPelaje(color);
-        m.setNacimiento(nacimiento);
-        m.setCliente(cliente);
-        m.setActivo(activo);
-
-        int r = data.actualizarMascota(m);
-
-        if (r == 1) {
-            JOptionPane.showMessageDialog(this, "Mascota actualizada");
-            listar(MascotasView.tablaMascotas);
+        //validar que rellene campos obligatorios
+        if (validacionesVacias() == 1) {
+            JOptionPane.showMessageDialog(this, "Debe llenar los campos requeridos");
         } else {
-            JOptionPane.showMessageDialog(this, "Error al actualizar mascota");
+            int id = Integer.parseInt(txtCodigo.getText());
+            String alias = txtAlias.getText();
+            char sexo = 'X';
+            if (rbMacho.isSelected()) {
+                sexo = 'M';
+            } else if (rbHembra.isSelected()) {
+                sexo = 'H';
+            }
+
+            String especie = comboEspecies.getSelectedItem().toString();
+            String raza = txtRaza.getText();
+            String color = txtColor.getText();
+            Date nacimiento = calendarNacimiento.getDate();
+            Cliente cliente = (Cliente) comboDueño.getSelectedItem();
+            boolean activo = true;
+
+            m.setCodigo(id);
+            m.setAlias(alias);
+            m.setSexo(sexo);
+            m.setEspecie(Mascota.validarTipoMascota(especie));
+            m.setRaza(raza);
+            m.setColorPelaje(color);
+            m.setNacimiento(nacimiento);
+            m.setCliente(cliente);
+            m.setActivo(activo);
+
+            int r = data.actualizarMascota(m);
+
+            if (r == 1) {
+                JOptionPane.showMessageDialog(this, "Mascota actualizada");
+                listar(MascotasView.tablaMascotas);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al actualizar mascota");
+            }
         }
-    
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void lblAtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAtrasMouseClicked
+
         this.setVisible(false);
         MascotasView.background.setVisible(true);
     }//GEN-LAST:event_lblAtrasMouseClicked
+
+    private void txtAliasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAliasKeyTyped
+        MenuView.validarSoloTexto(evt);
+    }//GEN-LAST:event_txtAliasKeyTyped
+
+    private void txtRazaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazaKeyTyped
+        MenuView.validarSoloTexto(evt);
+    }//GEN-LAST:event_txtRazaKeyTyped
+
+    private void txtColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtColorKeyTyped
+        MenuView.validarSoloTexto(evt);
+    }//GEN-LAST:event_txtColorKeyTyped
 
     public void limpiarCampos() {
         txtAlias.setText("");
@@ -328,13 +444,30 @@ public class MascotaInsertarView extends javax.swing.JPanel {
         tablaMascotas.setModel(MascotasView.modelo);
     }
 
+    public int validacionesVacias() {
+        String a = txtAlias.getText();
+        String b = txtColor.getText();
+
+        if (a.isEmpty() || b.isEmpty()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel asterisco3;
+    private javax.swing.JLabel asterisco4;
+    private javax.swing.JLabel asterisco5;
+    private javax.swing.JLabel asterisco6;
+    private javax.swing.JLabel asterisco7;
     protected static javax.swing.JButton btnActualizar;
     protected static javax.swing.JButton btnGuardar;
     private javax.swing.ButtonGroup btnesSexo;
     protected static com.toedter.calendar.JDateChooser calendarNacimiento;
     protected static javax.swing.JComboBox<Cliente> comboDueño;
     protected static javax.swing.JComboBox<TipoMascota> comboEspecies;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAtras;

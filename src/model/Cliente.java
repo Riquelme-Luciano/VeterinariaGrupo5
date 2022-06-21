@@ -1,8 +1,9 @@
- package model;
+package model;
 
 import java.util.List;
 
 public class Cliente {
+
     private long dni;
     private String nombre;
     private String apellido;
@@ -10,7 +11,7 @@ public class Cliente {
     private String direccion;
     private String contactoAlternativo;
     private List<Mascota> mascotas;
-    
+
     public Cliente() {
     }
 
@@ -18,9 +19,9 @@ public class Cliente {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.telefono= telefono;
+        this.telefono = telefono;
     }
-    
+
     public Cliente(long dni, String nombre, String apellido, long telefono, String direccion, String alternativa) {
         this.dni = dni;
         this.nombre = nombre;
@@ -82,6 +83,5 @@ public class Cliente {
     public String toString() {
         return nombre + " " + apellido;
     }
-    
-    
+
 }

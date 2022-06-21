@@ -9,9 +9,9 @@ import model.Conexion;
 public class ClienteData {
 
     private Connection con = null;
-    
+
     public ClienteData(Conexion conexion) {
-        this.con=conexion.getConexion();
+        this.con = conexion.getConexion();
     }
 
     public int insertarCliente(Cliente cliente) {
@@ -25,9 +25,9 @@ public class ClienteData {
             ps.setString(5, cliente.getDireccion());
             ps.setString(6, cliente.getAlternativa());
             ps.setBoolean(7, true);
-            
+
             ps.executeUpdate();
-           
+
             return 1;
         } catch (Exception e) {
             System.out.println("Error al insertar cliente a la bd" + e);
@@ -61,28 +61,28 @@ public class ClienteData {
         try {
             PreparedStatement ps = con.prepareStatement(instruccion);
             ps.setInt(1, documento);
-            ps.setInt(2,documento);
+            ps.setInt(2, documento);
             ps.executeUpdate();
-            
+
         } catch (Exception e) {
             System.out.println("Error al querer eliminar cliente en data" + e);
         }
     }
 
-    public void eliminarClienteSinMascota(int documento){
+    public void eliminarClienteSinMascota(int documento) {
         String instruccion = "UPDATE cliente SET activo=0 WHERE documento=?";
         try {
             PreparedStatement ps = con.prepareStatement(instruccion);
             ps.setInt(1, documento);
             ps.executeUpdate();
-            
+
         } catch (Exception e) {
             System.out.println("Error al querer eliminar cliente en data" + e);
         }
     }
-    
+
     public List listar() {
-        
+
         List<Cliente> datos = new ArrayList<>();
         String instruccion = "SELECT * FROM cliente WHERE activo=true";
         try {
@@ -99,12 +99,52 @@ public class ClienteData {
                 c.setAlternativa(rs.getString(6));
                 datos.add(c);
             }
-            
+
         } catch (SQLException e) {
             System.out.println("Error al listar clientes " + e);
         }
 
         return datos;
+    }
+
+    public List listarEliminados() {
+
+        List<Cliente> datos = new ArrayList<>();
+        String instruccion = "SELECT * FROM cliente WHERE activo=false";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Cliente c = new Cliente();
+                c.setDni(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setApellido(rs.getString(3));
+                c.setTelefono(rs.getLong(4));//convertir de date a LocalDate
+                c.setDireccion(rs.getString(5));
+                c.setAlternativa(rs.getString(6));
+                datos.add(c);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al listar clientes " + e);
+        }
+
+        return datos;
+    }
+
+    public int activarCliente(int dni) {
+        String instruccion = "UPDATE cliente SET activo=true WHERE documento=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setLong(1,dni);
+
+            ps.executeUpdate();
+            return 1;
+        } catch (Exception e) {
+            System.out.println("Error al querer activar cliente en data" + e);
+            return 0;
+        }
     }
 
     public Cliente buscarCliente(int dni) {
@@ -122,12 +162,12 @@ public class ClienteData {
                 c.setTelefono(rs.getLong("telefono"));//convertir de date a LocalDate
                 c.setDireccion(rs.getString("direccion"));
                 c.setAlternativa(rs.getString("personaAlternativa"));
-                
+
             }
             ps.close();
 
         } catch (SQLException ex) {
-            System.out.println("Error de conexion con base de datos en buscar cliente"+ex);
+            System.out.println("Error de conexion con base de datos en buscar cliente" + ex);
         }
 
         return c;

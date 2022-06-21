@@ -72,10 +72,11 @@ public class VisitaDetallesView extends javax.swing.JPanel implements Printable 
         btnVolver = new javax.swing.JButton();
         btnImprimirTicket = new javax.swing.JButton();
 
-        setMinimumSize(new java.awt.Dimension(800, 500));
+        setMaximumSize(new java.awt.Dimension(390, 500));
+        setMinimumSize(new java.awt.Dimension(390, 500));
         setPreferredSize(new java.awt.Dimension(390, 500));
 
-        background.setBackground(new java.awt.Color(11, 95, 93));
+        background.setBackground(new java.awt.Color(228, 249, 245));
         background.setPreferredSize(new java.awt.Dimension(390, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -275,11 +276,13 @@ public class VisitaDetallesView extends javax.swing.JPanel implements Printable 
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
